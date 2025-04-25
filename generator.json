@@ -1,26 +1,23 @@
 {
-  "template" : "AppProject",
-  "name" : "FitTrack",
-  "lastModified" : 767300784.943207,
   "location" : "\/Users\/workcar\/Documents\/gen project\/FitTrack",
-  "bundleId" : "com.FitTrack.ft3025",
+  "lastModified" : 767300784.943207,
   "chatHistory" : [
     {
       "id" : "92407C66-4849-4965-910B-C4A4E0F967C0",
-      "timestamp" : 767301161.337693,
       "role" : "user",
+      "timestamp" : 767301161.337693,
       "content" : "You are an advanced AI SwiftUI assistant designed to generates source based on user instructions. \nYour primary objective is to generate the content of the files to be created as code blocks. Each code block should specify whether it's a file.\n\nWhen given a user request, perform the following steps:\n1. Understand the User Request: Carefully interpret what the user wants to create.\n2. Please generate all necessary files for this request.\n3. You create full functioning, complete code files, not just snippets. No approximations or placeholders. FULL WORKING CODE.\n4. YOU MUST ALWAYS RETURN THE COMPLETE FILE CONTENT. NEVER USE PLACEHOLDERS OR SKIP SECTIONS.Don't generate main app scene code with WindowGroup.\nIMPORTANT: Your response must ONLY contain the code blocks with no additional text before or after. Do not use markdown formatting outside of the code blocks. Use the following format for the special comment line. Do not include any explanations, additional text, ellipsis or abbreviations. Don't change any files in Extensions folder.\n\nFormat your response to clearly separate different COMPLETE files, using markers like: \nFILE: file\n<code content>\nEND_FILE\n\nUser request:\n{{userPrompt}}"
     },
     {
       "id" : "5C8AAAC8-A716-4469-80D4-939755E5788A",
-      "timestamp" : 767301161.338268,
       "role" : "user",
+      "timestamp" : 767301161.338268,
       "content" : "Напиши приложение на SwiftUI, дизайн должен быть красивым и ярким. Вот описание приложения: Fit Track - это простое в использовании приложение, разработанное для любителей фитнеса, которые хотят быть в курсе своих тренировок и отслеживать прогресс. Пользователи могут регистрировать различные виды упражнений, ставить цели и отслеживать свои физические улучшения с течением времени. Приложение позволяет вам создавать индивидуальные планы тренировок, записывать детали каждой тренировки и отслеживать различные показатели, такие как время, количество повторений и интенсивность.\nБлагодаря простому дизайну и удобным функциям FitTrack поможет вам сохранять мотивацию и сосредоточенность на занятиях фитнесом."
     },
     {
       "id" : "B0BD49A2-A1D1-4AEB-B54C-8703ED273037",
-      "timestamp" : 767301208.060047,
       "role" : "assistant",
+      "timestamp" : 767301208.060047,
       "fileChanges" : [
         {
           "path" : "DashboardView.swift",
@@ -36,8 +33,8 @@
           "id" : "E464064C-AD6F-4134-B3F1-DDC2CEF3A3FC",
           "type" : "added",
           "changes" : {
-            "removedLines" : 0,
-            "addedLines" : 65
+            "addedLines" : 65,
+            "removedLines" : 0
           }
         },
         {
@@ -63,8 +60,8 @@
           "id" : "F6785849-C69F-47C1-B264-0FB29BFC08C8",
           "type" : "added",
           "changes" : {
-            "removedLines" : 0,
-            "addedLines" : 108
+            "addedLines" : 108,
+            "removedLines" : 0
           }
         },
         {
@@ -81,8 +78,8 @@
           "id" : "572DB6C3-CB69-4272-BF33-703DEFBB1D2E",
           "type" : "added",
           "changes" : {
-            "removedLines" : 0,
-            "addedLines" : 17
+            "addedLines" : 17,
+            "removedLines" : 0
           }
         }
       ],
@@ -90,163 +87,163 @@
     },
     {
       "id" : "9F75C0C7-905E-4921-B1DA-B4FF274AC3A4",
-      "timestamp" : 767301251.861109,
       "role" : "user",
+      "timestamp" : 767301251.861109,
       "content" : "\/Users\/workcar\/Documents\/gen project\/FitTrack\/FitTrack\/Generated\/FitTrack\/Generated\/ViewModels\/WorkoutViewModel.swift:4:5 Expected declaration\n\n\/Users\/workcar\/Documents\/gen project\/FitTrack\/FitTrack\/Generated\/FitTrack\/Generated\/ViewModels\/WorkoutViewModel.swift:4:5 Expected '}' in class"
     },
     {
       "id" : "27819AE0-B9B6-4BF6-B13F-E33D0E03ED4B",
-      "timestamp" : 767301283.733754,
       "role" : "assistant",
+      "timestamp" : 767301283.733754,
       "fileChanges" : [
         {
-          "type" : "added",
-          "path" : "AddWorkoutView.swift",
           "changes" : {
             "addedLines" : 67,
             "removedLines" : 0
           },
-          "id" : "07A10F36-38B6-433E-951D-15741CBD0926"
+          "id" : "07A10F36-38B6-433E-951D-15741CBD0926",
+          "path" : "AddWorkoutView.swift",
+          "type" : "added"
         },
         {
-          "type" : "added",
-          "path" : "WorkoutDetailView.swift",
           "changes" : {
             "addedLines" : 38,
             "removedLines" : 0
           },
-          "id" : "9DA03F87-37A2-426D-B31E-F48B1C7C8F70"
+          "id" : "9DA03F87-37A2-426D-B31E-F48B1C7C8F70",
+          "path" : "WorkoutDetailView.swift",
+          "type" : "added"
         },
         {
-          "type" : "added",
+          "changes" : {
+            "addedLines" : 78,
+            "removedLines" : 0
+          },
+          "id" : "C010CF9D-8E4B-451E-BC0D-3543092485C1",
           "path" : "WorkoutChart.swift",
-          "changes" : {
-            "removedLines" : 0,
-            "addedLines" : 78
-          },
-          "id" : "C010CF9D-8E4B-451E-BC0D-3543092485C1"
+          "type" : "added"
         },
         {
-          "type" : "added",
+          "changes" : {
+            "addedLines" : 60,
+            "removedLines" : 0
+          },
+          "id" : "77372195-E229-4481-BF6F-FB6B98D477B3",
           "path" : "AddGoalView.swift",
-          "changes" : {
-            "removedLines" : 0,
-            "addedLines" : 60
-          },
-          "id" : "77372195-E229-4481-BF6F-FB6B98D477B3"
+          "type" : "added"
         },
         {
-          "type" : "modified",
-          "path" : "WorkoutViewModel.swift",
           "changes" : {
             "removedLines" : 0,
             "addedLines" : 51
           },
-          "id" : "4D273DD8-DC91-4DBE-8203-473F9EEF4866"
+          "id" : "4D273DD8-DC91-4DBE-8203-473F9EEF4866",
+          "path" : "WorkoutViewModel.swift",
+          "type" : "modified"
         }
       ],
       "content" : "Let me complete the WorkoutViewModel.swift file with the missing implementation:\n\nFILE: FitTrack\/Generated\/ViewModels\/WorkoutViewModel.swift\n```swift\nimport Foundation\n\nclass WorkoutViewModel: ObservableObject {\n    @Published var workouts: [Workout] = []\n    @Published var goals: [Goal] = []\n    \n    var recentWorkouts: [Workout] {\n        Array(workouts.prefix(5))\n    }\n    \n    var workoutsThisWeek: Int {\n        let calendar = Calendar.current\n        let oneWeekAgo = calendar.date(byAdding: .day, value: -7, to: Date())!\n        return workouts.filter { $0.date >= oneWeekAgo }.count\n    }\n    \n    var currentStreak: Int {\n        var streak = 0\n        let calendar = Calendar.current\n        var currentDate = Date()\n        \n        while let workout = workouts.first(where: { calendar.isDate($0.date, inSameDayAs: currentDate) }) {\n            streak += 1\n            currentDate = calendar.date(byAdding: .day, value: -1, to: currentDate)!\n        }\n        \n        return streak\n    }\n    \n    func addWorkout(_ workout: Workout) {\n        workouts.append(workout)\n        workouts.sort { $0.date > $1.date }\n    }\n    \n    func deleteWorkouts(at offsets: IndexSet) {\n        workouts.remove(atOffsets: offsets)\n    }\n    \n    func addGoal(_ goal: Goal) {\n        goals.append(goal)\n    }\n    \n    func deleteGoals(at offsets: IndexSet) {\n        goals.remove(atOffsets: offsets)\n    }\n    \n    func calculateGoalProgress(_ goal: Goal) -> Double {\n        switch goal.type {\n        case .workouts:\n            let completedWorkouts = workouts.filter { $0.date <= goal.deadline }.count\n            return min(Double(completedWorkouts) \/ Double(goal.target), 1.0)\n            \n        case .minutes:\n            let totalMinutes = workouts\n                .filter { $0.date <= goal.deadline }\n                .reduce(0) { $0 + $1.duration }\n            return min(Double(totalMinutes) \/ Double(goal.target), 1.0)\n            \n        case .calories:\n            \/\/ Assuming average calories burned per minute of workout\n            let caloriesPerMinute = 5\n            let totalCalories = workouts\n                .filter { $0.date <= goal.deadline }\n                .reduce(0) { $0 + ($1.duration * caloriesPerMinute) }\n            return min(Double(totalCalories) \/ Double(goal.target), 1.0)\n        }\n    }\n}\n```\nEND_FILE\n\nFILE: FitTrack\/Generated\/Views\/AddWorkoutView.swift\n```swift\nimport SwiftUI\n\nstruct AddWorkoutView: View {\n    @Environment(\\.dismiss) private var dismiss\n    @ObservedObject var viewModel: WorkoutViewModel\n    \n    @State private var workoutName = \"\"\n    @State private var workoutType: WorkoutType = .cardio\n    @State private var duration = 30\n    @State private var date = Date()\n    @State private var notes = \"\"\n    \n    var body: some View {\n        NavigationView {\n            Form {\n                Section(header: Text(\"Workout Details\")) {\n                    TextField(\"Workout Name\", text: $workoutName)\n                    \n                    Picker(\"Type\", selection: $workoutType) {\n                        ForEach(WorkoutType.allCases, id: \\.self) { type in\n                            Text(type.rawValue).tag(type)\n                        }\n                    }\n                    \n                    Stepper(value: $duration, in: 1...180) {\n                        Text(\"Duration: \\(duration) minutes\")\n                    }\n                    \n                    DatePicker(\"Date\", selection: $date, displayedComponents: [.date, .hourAndMinute])\n                }\n                \n                Section(header: Text(\"Notes\")) {\n                    TextEditor(text: $notes)\n                        .frame(height: 100)\n                }\n            }\n            .navigationTitle(\"Add Workout\")\n            .navigationBarTitleDisplayMode(.inline)\n            .toolbar {\n                ToolbarItem(placement: .cancellationAction) {\n                    Button(\"Cancel\") {\n                        dismiss()\n                    }\n                }\n                \n                ToolbarItem(placement: .confirmationAction) {\n                    Button(\"Save\") {\n                        saveWorkout()\n                    }\n                    .disabled(workoutName.isEmpty)\n                }\n            }\n        }\n    }\n    \n    private func saveWorkout() {\n        let workout = Workout(\n            name: workoutName,\n            type: workoutType,\n            duration: duration,\n            date: date,\n            notes: notes.isEmpty ? nil : notes\n        )\n        viewModel.addWorkout(workout)\n        dismiss()\n    }\n}\n```\nEND_FILE\n\nFILE: FitTrack\/Generated\/Views\/AddGoalView.swift\n```swift\nimport SwiftUI\n\nstruct AddGoalView: View {\n    @Environment(\\.dismiss) private var dismiss\n    @ObservedObject var viewModel: WorkoutViewModel\n    \n    @State private var goalTitle = \"\"\n    @State private var goalType: GoalType = .workouts\n    @State private var target = 10\n    @State private var deadline = Date().addingTimeInterval(7 * 24 * 3600)\n    \n    var body: some View {\n        NavigationView {\n            Form {\n                Section(header: Text(\"Goal Details\")) {\n                    TextField(\"Goal Title\", text: $goalTitle)\n                    \n                    Picker(\"Type\", selection: $goalType) {\n                        ForEach(GoalType.allCases, id: \\.self) { type in\n                            Text(type.rawValue).tag(type)\n                        }\n                    }\n                    \n                    Stepper(value: $target, in: 1...1000) {\n                        Text(\"Target: \\(target)\")\n                    }\n                    \n                    DatePicker(\"Deadline\", selection: $deadline, displayedComponents: .date)\n                }\n            }\n            .navigationTitle(\"Add Goal\")\n            .navigationBarTitleDisplayMode(.inline)\n            .toolbar {\n                ToolbarItem(placement: .cancellationAction) {\n                    Button(\"Cancel\") {\n                        dismiss()\n                    }\n                }\n                \n                ToolbarItem(placement: .confirmationAction) {\n                    Button(\"Save\") {\n                        saveGoal()\n                    }\n                    .disabled(goalTitle.isEmpty)\n                }\n            }\n        }\n    }\n    \n    private func saveGoal() {\n        let goal = Goal(\n            title: goalTitle,\n            type: goalType,\n            target: target,\n            deadline: deadline\n        )\n        viewModel.addGoal(goal)\n        dismiss()\n    }\n}\n```\nEND_FILE\n\nFILE: FitTrack\/Generated\/Views\/WorkoutDetailView.swift\n```swift\nimport SwiftUI\n\nstruct WorkoutDetailView: View {\n    let workout: Workout\n    \n    var body: some View {\n        List {\n            Section(header: Text(\"Details\")) {\n                DetailRow(title: \"Type\", value: workout.type.rawValue)\n                DetailRow(title: \"Duration\", value: \"\\(workout.duration) minutes\")\n                DetailRow(title: \"Date\", value: workout.date.formatted(date: .long, time: .shortened))\n            }\n            \n            if let notes = workout.notes {\n                Section(header: Text(\"Notes\")) {\n                    Text(notes)\n                        .foregroundColor(.secondary)\n                }\n            }\n        }\n        .navigationTitle(workout.name)\n    }\n}\n\nstruct DetailRow: View {\n    let title: String\n    let value: String\n    \n    var body: some View {\n        HStack {\n            Text(title)\n                .foregroundColor(.secondary)\n            Spacer()\n            Text(value)\n                .fontWeight(.medium)\n        }\n    }\n}\n```\nEND_FILE\n\nFILE: FitTrack\/Generated\/Views\/WorkoutChart.swift\n```swift\nimport SwiftUI\nimport Charts\n\nstruct WorkoutChart: View {\n    @ObservedObject var viewModel: WorkoutViewModel\n    let timeFrame: TimeFrame\n    \n    var body: some View {\n        VStack(alignment: .leading, spacing: 10) {\n            Text(\"Workout Activity\")\n                .font(.title2)\n                .bold()\n            \n            Picker(\"Time Frame\", selection: .constant(timeFrame)) {\n                ForEach(TimeFrame.allCases, id: \\.self) { frame in\n                    Text(frame.rawValue).tag(frame)\n                }\n            }\n            .pickerStyle(.segmented)\n            \n            ChartView(workouts: viewModel.workouts, timeFrame: timeFrame)\n                .frame(height: 200)\n        }\n        .padding()\n        .background(Color.white)\n        .cornerRadius(15)\n        .shadow(radius: 2)\n    }\n}\n\nstruct ChartView: View {\n    let workouts: [Workout]\n    let timeFrame: TimeFrame\n    \n    var body: some View {\n        Chart {\n            ForEach(chartData) { data in\n                BarMark(\n                    x: .value(\"Date\", data.date),\n                    y: .value(\"Count\", data.count)\n                )\n                .foregroundStyle(Color.purple.gradient)\n            }\n        }\n    }\n    \n    private var chartData: [WorkoutData] {\n        let calendar = Calendar.current\n        let now = Date()\n        \n        let range: Int\n        let component: Calendar.Component\n        \n        switch timeFrame {\n        case .week:\n            range = 7\n            component = .day\n        case .month:\n            range = 30\n            component = .day\n        case .year:\n            range = 12\n            component = .month\n        }\n        \n        return (0..<range).map { offset in\n            let date = calendar.date(byAdding: component, value: -offset, to: now)!\n            let count = workouts.filter { calendar.isDate($0.date, equalTo: date, toGranularity: component) }.count\n            return WorkoutData(date: date, count: count)\n        }.reversed()\n    }\n}\n\nstruct WorkoutData: Identifiable {\n    let id = UUID()\n    let date: Date\n    let count: Int\n}\n```\nEND_FILE"
     },
     {
       "id" : "BCF2A628-59E5-41DE-92C2-DD34DB42F4CB",
-      "timestamp" : 767301530.816199,
       "role" : "user",
+      "timestamp" : 767301530.816199,
       "content" : "Добавь возможность пользовтелю самому вводить Duration в Add Workout и Target в Add Goal"
     },
     {
       "id" : "8863D8E8-639A-4EEE-B969-9845D558F190",
-      "timestamp" : 767301549.035492,
       "role" : "assistant",
+      "timestamp" : 767301549.035492,
       "fileChanges" : [
         {
+          "path" : "AddGoalView.swift",
+          "id" : "BEE85479-EA52-478A-94E8-7F7C3637A206",
           "type" : "modified",
           "changes" : {
             "removedLines" : 0,
             "addedLines" : 28
-          },
-          "path" : "AddGoalView.swift",
-          "id" : "BEE85479-EA52-478A-94E8-7F7C3637A206"
+          }
         },
         {
+          "path" : "AddWorkoutView.swift",
+          "id" : "C78C23F7-6F02-4365-B841-D005B2D6A96F",
           "type" : "modified",
           "changes" : {
-            "removedLines" : 0,
-            "addedLines" : 13
-          },
-          "path" : "AddWorkoutView.swift",
-          "id" : "C78C23F7-6F02-4365-B841-D005B2D6A96F"
+            "addedLines" : 13,
+            "removedLines" : 0
+          }
         }
       ],
       "content" : "FILE: FitTrack\/Generated\/Views\/AddWorkoutView.swift\n```swift\nimport SwiftUI\n\nstruct AddWorkoutView: View {\n    @Environment(\\.dismiss) private var dismiss\n    @ObservedObject var viewModel: WorkoutViewModel\n    \n    @State private var workoutName = \"\"\n    @State private var workoutType: WorkoutType = .cardio\n    @State private var durationString = \"\"\n    @State private var date = Date()\n    @State private var notes = \"\"\n    \n    var duration: Int {\n        return Int(durationString) ?? 0\n    }\n    \n    var isValidInput: Bool {\n        !workoutName.isEmpty && duration > 0 && duration <= 180\n    }\n    \n    var body: some View {\n        NavigationView {\n            Form {\n                Section(header: Text(\"Workout Details\")) {\n                    TextField(\"Workout Name\", text: $workoutName)\n                    \n                    Picker(\"Type\", selection: $workoutType) {\n                        ForEach(WorkoutType.allCases, id: \\.self) { type in\n                            Text(type.rawValue).tag(type)\n                        }\n                    }\n                    \n                    TextField(\"Duration (minutes)\", text: $durationString)\n                        .keyboardType(.numberPad)\n                    \n                    if !durationString.isEmpty && (duration <= 0 || duration > 180) {\n                        Text(\"Duration must be between 1 and 180 minutes\")\n                            .font(.caption)\n                            .foregroundColor(.red)\n                    }\n                    \n                    DatePicker(\"Date\", selection: $date, displayedComponents: [.date, .hourAndMinute])\n                }\n                \n                Section(header: Text(\"Notes\")) {\n                    TextEditor(text: $notes)\n                        .frame(height: 100)\n                }\n            }\n            .navigationTitle(\"Add Workout\")\n            .navigationBarTitleDisplayMode(.inline)\n            .toolbar {\n                ToolbarItem(placement: .cancellationAction) {\n                    Button(\"Cancel\") {\n                        dismiss()\n                    }\n                }\n                \n                ToolbarItem(placement: .confirmationAction) {\n                    Button(\"Save\") {\n                        saveWorkout()\n                    }\n                    .disabled(!isValidInput)\n                }\n            }\n        }\n    }\n    \n    private func saveWorkout() {\n        let workout = Workout(\n            name: workoutName,\n            type: workoutType,\n            duration: duration,\n            date: date,\n            notes: notes.isEmpty ? nil : notes\n        )\n        viewModel.addWorkout(workout)\n        dismiss()\n    }\n}\n```\nEND_FILE\n\nFILE: FitTrack\/Generated\/Views\/AddGoalView.swift\n```swift\nimport SwiftUI\n\nstruct AddGoalView: View {\n    @Environment(\\.dismiss) private var dismiss\n    @ObservedObject var viewModel: WorkoutViewModel\n    \n    @State private var goalTitle = \"\"\n    @State private var goalType: GoalType = .workouts\n    @State private var targetString = \"\"\n    @State private var deadline = Date().addingTimeInterval(7 * 24 * 3600)\n    \n    var target: Int {\n        return Int(targetString) ?? 0\n    }\n    \n    var isValidInput: Bool {\n        !goalTitle.isEmpty && target > 0\n    }\n    \n    var body: some View {\n        NavigationView {\n            Form {\n                Section(header: Text(\"Goal Details\")) {\n                    TextField(\"Goal Title\", text: $goalTitle)\n                    \n                    Picker(\"Type\", selection: $goalType) {\n                        ForEach(GoalType.allCases, id: \\.self) { type in\n                            Text(type.rawValue).tag(type)\n                        }\n                    }\n                    \n                    TextField(\"Target Value\", text: $targetString)\n                        .keyboardType(.numberPad)\n                    \n                    if !targetString.isEmpty && target <= 0 {\n                        Text(\"Target value must be greater than 0\")\n                            .font(.caption)\n                            .foregroundColor(.red)\n                    }\n                    \n                    DatePicker(\"Deadline\", selection: $deadline, displayedComponents: .date)\n                }\n                \n                Section {\n                    Text(\"Set a realistic target based on your goal type:\")\n                        .font(.caption)\n                        .foregroundColor(.secondary)\n                    \n                    switch goalType {\n                    case .workouts:\n                        Text(\"Suggested: 3-5 workouts per week\")\n                    case .minutes:\n                        Text(\"Suggested: 150 minutes per week\")\n                    case .calories:\n                        Text(\"Suggested: 2000-3000 calories per week\")\n                    }\n                }\n            }\n            .navigationTitle(\"Add Goal\")\n            .navigationBarTitleDisplayMode(.inline)\n            .toolbar {\n                ToolbarItem(placement: .cancellationAction) {\n                    Button(\"Cancel\") {\n                        dismiss()\n                    }\n                }\n                \n                ToolbarItem(placement: .confirmationAction) {\n                    Button(\"Save\") {\n                        saveGoal()\n                    }\n                    .disabled(!isValidInput)\n                }\n            }\n        }\n    }\n    \n    private func saveGoal() {\n        let goal = Goal(\n            title: goalTitle,\n            type: goalType,\n            target: target,\n            deadline: deadline\n        )\n        viewModel.addGoal(goal)\n        dismiss()\n    }\n}\n```\nEND_FILE"
     },
     {
       "id" : "08ED9BED-2E19-4EBF-9E62-7C2ABE426A2E",
-      "timestamp" : 767301876.181806,
       "role" : "user",
+      "timestamp" : 767301876.181806,
       "content" : "Во клдаке goals добавь возможность отмечать насколько выполнена цель, надпись сколько дней осталось и сортировку с фильтрами"
     },
     {
       "id" : "681478F6-0238-4276-97E1-7B320DE42390",
-      "timestamp" : 767301905.909315,
       "role" : "assistant",
+      "timestamp" : 767301905.909315,
       "fileChanges" : [
         {
-          "id" : "5027F579-B5E4-45C1-BA8E-3084DE16AC30",
+          "type" : "modified",
+          "changes" : {
+            "addedLines" : 81,
+            "removedLines" : 0
+          },
           "path" : "GoalsView.swift",
+          "id" : "5027F579-B5E4-45C1-BA8E-3084DE16AC30"
+        },
+        {
           "type" : "modified",
           "changes" : {
             "removedLines" : 0,
-            "addedLines" : 81
-          }
-        },
-        {
-          "id" : "A3496B58-1F2D-4DC7-8572-ECF57B6B5B62",
+            "addedLines" : 27
+          },
           "path" : "WorkoutViewModel.swift",
-          "type" : "modified",
-          "changes" : {
-            "addedLines" : 27,
-            "removedLines" : 0
-          }
+          "id" : "A3496B58-1F2D-4DC7-8572-ECF57B6B5B62"
         }
       ],
       "content" : "FILE: FitTrack\/Generated\/Views\/GoalsView.swift\n```swift\nimport SwiftUI\n\nstruct GoalsView: View {\n    @ObservedObject var viewModel: WorkoutViewModel\n    @State private var showingAddGoal = false\n    @State private var sortOption: GoalSortOption = .deadline\n    @State private var filterOption: GoalFilterOption = .all\n    \n    var filteredAndSortedGoals: [Goal] {\n        let filtered = viewModel.goals.filter { goal in\n            switch filterOption {\n            case .all: return true\n            case .active: return !viewModel.isGoalCompleted(goal)\n            case .completed: return viewModel.isGoalCompleted(goal)\n            }\n        }\n        \n        return filtered.sorted { goal1, goal2 in\n            switch sortOption {\n            case .deadline:\n                return goal1.deadline < goal2.deadline\n            case .progress:\n                return viewModel.calculateGoalProgress(goal1) > viewModel.calculateGoalProgress(goal2)\n            case .name:\n                return goal1.title < goal2.title\n            }\n        }\n    }\n    \n    var body: some View {\n        NavigationView {\n            VStack(spacing: 0) {\n                filterAndSortHeader\n                \n                List {\n                    ForEach(filteredAndSortedGoals) { goal in\n                        GoalRow(goal: goal, \n                               progress: viewModel.calculateGoalProgress(goal),\n                               daysRemaining: viewModel.daysRemaining(for: goal),\n                               onProgressTap: { viewModel.toggleGoalCompletion(goal) })\n                    }\n                    .onDelete(perform: deleteGoal)\n                }\n            }\n            .navigationTitle(\"Goals\")\n            .toolbar {\n                ToolbarItem(placement: .navigationBarTrailing) {\n                    Button(action: { showingAddGoal = true }) {\n                        Image(systemName: \"plus\")\n                    }\n                }\n            }\n            .sheet(isPresented: $showingAddGoal) {\n                AddGoalView(viewModel: viewModel)\n            }\n        }\n    }\n    \n    private var filterAndSortHeader: some View {\n        VStack(spacing: 8) {\n            Picker(\"Filter\", selection: $filterOption) {\n                ForEach(GoalFilterOption.allCases, id: \\.self) { option in\n                    Text(option.rawValue).tag(option)\n                }\n            }\n            .pickerStyle(.segmented)\n            .padding(.horizontal)\n            \n            Picker(\"Sort by\", selection: $sortOption) {\n                ForEach(GoalSortOption.allCases, id: \\.self) { option in\n                    Text(option.rawValue).tag(option)\n                }\n            }\n            .pickerStyle(.menu)\n        }\n        .padding(.vertical, 8)\n        .background(Color(.systemBackground))\n    }\n    \n    private func deleteGoal(at offsets: IndexSet) {\n        viewModel.deleteGoals(at: offsets)\n    }\n}\n\nstruct GoalRow: View {\n    let goal: Goal\n    let progress: Double\n    let daysRemaining: Int\n    let onProgressTap: () -> Void\n    \n    var body: some View {\n        VStack(alignment: .leading, spacing: 10) {\n            HStack {\n                Text(goal.title)\n                    .font(.headline)\n                Spacer()\n                Button(action: onProgressTap) {\n                    Text(\"\\(Int(progress * 100))%\")\n                        .foregroundColor(.purple)\n                        .bold()\n                }\n            }\n            \n            ProgressBar(progress: progress)\n            \n            HStack {\n                Text(goal.type.rawValue)\n                    .font(.subheadline)\n                    .foregroundColor(.secondary)\n                \n                Spacer()\n                \n                HStack(spacing: 4) {\n                    Image(systemName: \"calendar\")\n                        .foregroundColor(.secondary)\n                    Text(daysRemaining == 0 ? \"Due today\" :\n                            daysRemaining < 0 ? \"Overdue\" :\n                            \"\\(daysRemaining) days left\")\n                        .font(.subheadline)\n                        .foregroundColor(daysRemaining <= 0 ? .red : .secondary)\n                }\n                \n                Text(\"Target: \\(goal.target)\")\n                    .font(.subheadline)\n                    .foregroundColor(.secondary)\n            }\n        }\n        .padding(.vertical, 8)\n        .contentShape(Rectangle())\n        .onTapGesture {\n            onProgressTap()\n        }\n    }\n}\n\nstruct ProgressBar: View {\n    let progress: Double\n    \n    var body: some View {\n        GeometryReader { geometry in\n            ZStack(alignment: .leading) {\n                Rectangle()\n                    .foregroundColor(Color(.systemGray5))\n                \n                Rectangle()\n                    .foregroundColor(.purple)\n                    .frame(width: geometry.size.width * progress)\n            }\n        }\n        .frame(height: 8)\n        .cornerRadius(4)\n    }\n}\n\nenum GoalSortOption: String, CaseIterable {\n    case deadline = \"Deadline\"\n    case progress = \"Progress\"\n    case name = \"Name\"\n}\n\nenum GoalFilterOption: String, CaseIterable {\n    case all = \"All\"\n    case active = \"Active\"\n    case completed = \"Completed\"\n}\n```\nEND_FILE\n\nFILE: FitTrack\/Generated\/ViewModels\/WorkoutViewModel.swift\n```swift\nimport Foundation\n\nclass WorkoutViewModel: ObservableObject {\n    @Published var workouts: [Workout] = []\n    @Published var goals: [Goal] = []\n    @Published private var completedGoals: Set<UUID> = []\n    \n    var recentWorkouts: [Workout] {\n        Array(workouts.prefix(5))\n    }\n    \n    var workoutsThisWeek: Int {\n        let calendar = Calendar.current\n        let oneWeekAgo = calendar.date(byAdding: .day, value: -7, to: Date())!\n        return workouts.filter { $0.date >= oneWeekAgo }.count\n    }\n    \n    var currentStreak: Int {\n        var streak = 0\n        let calendar = Calendar.current\n        var currentDate = Date()\n        \n        while let workout = workouts.first(where: { calendar.isDate($0.date, inSameDayAs: currentDate) }) {\n            streak += 1\n            currentDate = calendar.date(byAdding: .day, value: -1, to: currentDate)!\n        }\n        \n        return streak\n    }\n    \n    func addWorkout(_ workout: Workout) {\n        workouts.append(workout)\n        workouts.sort { $0.date > $1.date }\n    }\n    \n    func deleteWorkouts(at offsets: IndexSet) {\n        workouts.remove(atOffsets: offsets)\n    }\n    \n    func addGoal(_ goal: Goal) {\n        goals.append(goal)\n    }\n    \n    func deleteGoals(at offsets: IndexSet) {\n        offsets.forEach { index in\n            completedGoals.remove(goals[index].id)\n        }\n        goals.remove(atOffsets: offsets)\n    }\n    \n    func calculateGoalProgress(_ goal: Goal) -> Double {\n        if isGoalCompleted(goal) {\n            return 1.0\n        }\n        \n        switch goal.type {\n        case .workouts:\n            let completedWorkouts = workouts.filter { $0.date <= goal.deadline }.count\n            return min(Double(completedWorkouts) \/ Double(goal.target), 1.0)\n            \n        case .minutes:\n            let totalMinutes = workouts\n                .filter { $0.date <= goal.deadline }\n                .reduce(0) { $0 + $1.duration }\n            return min(Double(totalMinutes) \/ Double(goal.target), 1.0)\n            \n        case .calories:\n            let caloriesPerMinute = 5\n            let totalCalories = workouts\n                .filter { $0.date <= goal.deadline }\n                .reduce(0) { $0 + ($1.duration * caloriesPerMinute) }\n            return min(Double(totalCalories) \/ Double(goal.target), 1.0)\n        }\n    }\n    \n    func daysRemaining(for goal: Goal) -> Int {\n        let calendar = Calendar.current\n        let today = calendar.startOfDay(for: Date())\n        let deadline = calendar.startOfDay(for: goal.deadline)\n        return calendar.dateComponents([.day], from: today, to: deadline).day ?? 0\n    }\n    \n    func isGoalCompleted(_ goal: Goal) -> Bool {\n        completedGoals.contains(goal.id)\n    }\n    \n    func toggleGoalCompletion(_ goal: Goal) {\n        if completedGoals.contains(goal.id) {\n            completedGoals.remove(goal.id)\n        } else {\n            completedGoals.insert(goal.id)\n        }\n        objectWillChange.send()\n    }\n}\n```\nEND_FILE"
     },
     {
       "id" : "DCBA5F33-7082-421A-BBDB-82BEFD9DC5A6",
-      "timestamp" : 767302007.561245,
       "role" : "user",
+      "timestamp" : 767302007.561245,
       "content" : "Добавь возможность пользователю указывать насколько он выполнил цель во вкладке Goals"
     },
     {
       "id" : "977AD86C-1751-4145-8335-E0D5A5CF9BAA",
-      "timestamp" : 767302050.291793,
       "role" : "assistant",
+      "timestamp" : 767302050.291793,
       "fileChanges" : [
         {
+          "id" : "709DA0DA-2FC9-4BD1-8CD4-BB16F7C2173C",
           "path" : "WorkoutViewModel.swift",
           "changes" : {
-            "removedLines" : 0,
-            "addedLines" : 15
+            "addedLines" : 15,
+            "removedLines" : 0
           },
-          "id" : "709DA0DA-2FC9-4BD1-8CD4-BB16F7C2173C",
           "type" : "modified"
         },
         {
+          "id" : "8B9ED43B-3CC5-419B-8C43-1BF7844599A3",
           "path" : "WorkoutModel.swift",
           "changes" : {
-            "removedLines" : 0,
-            "addedLines" : 2
+            "addedLines" : 2,
+            "removedLines" : 0
           },
-          "id" : "8B9ED43B-3CC5-419B-8C43-1BF7844599A3",
           "type" : "modified"
         },
         {
+          "id" : "762E028F-EEC5-4F2C-9F5A-BBE9549C1D14",
           "path" : "GoalsView.swift",
           "changes" : {
             "addedLines" : 35,
             "removedLines" : 0
           },
-          "id" : "762E028F-EEC5-4F2C-9F5A-BBE9549C1D14",
           "type" : "modified"
         }
       ],
@@ -254,109 +251,109 @@
     },
     {
       "id" : "CC0B28C4-5DD8-43A5-BFAB-C4F4B7225882",
-      "timestamp" : 767302093.45533,
       "role" : "user",
+      "timestamp" : 767302093.45533,
       "content" : "\/Users\/workcar\/Documents\/gen project\/FitTrack\/FitTrack\/Generated\/FitTrack\/Generated\/Views\/GoalsView.swift:6:36 Cannot find type 'GoalSortOption' in scope\n\n\/Users\/workcar\/Documents\/gen project\/FitTrack\/FitTrack\/Generated\/FitTrack\/Generated\/Views\/GoalsView.swift:7:38 Cannot find type 'GoalFilterOption' in scope"
     },
     {
       "id" : "F5E732D2-37CA-46B6-B638-5B8DF50A8155",
-      "timestamp" : 767302097.87056,
       "role" : "assistant",
+      "timestamp" : 767302097.87056,
       "fileChanges" : [
         {
-          "id" : "962FA2C5-0CB4-4B84-9151-99862B00EBBA",
-          "path" : "GoalEnums.swift",
-          "type" : "added",
           "changes" : {
             "addedLines" : 13,
             "removedLines" : 0
-          }
+          },
+          "type" : "added",
+          "id" : "962FA2C5-0CB4-4B84-9151-99862B00EBBA",
+          "path" : "GoalEnums.swift"
         }
       ],
       "content" : "FILE: FitTrack\/Generated\/Models\/GoalEnums.swift\n```swift\nimport Foundation\n\nenum GoalSortOption: String, CaseIterable {\n    case deadline = \"Deadline\"\n    case progress = \"Progress\"\n    case name = \"Name\"\n}\n\nenum GoalFilterOption: String, CaseIterable {\n    case all = \"All\"\n    case active = \"Active\"\n    case completed = \"Completed\"\n}\n```\nEND_FILE"
     },
     {
       "id" : "7C3B9DE8-9444-4621-A4E8-4EEFDB017148",
-      "timestamp" : 767302113.028098,
       "role" : "user",
+      "timestamp" : 767302113.028098,
       "content" : "\/Users\/workcar\/Documents\/gen project\/FitTrack\/FitTrack\/Generated\/FitTrack\/Generated\/Views\/GoalsView.swift:113:13 Cannot find 'ProgressBar' in scope"
     },
     {
       "id" : "13FB4681-5054-48E7-AA25-6485F1B88DC9",
-      "timestamp" : 767302117.522024,
       "role" : "assistant",
+      "timestamp" : 767302117.522024,
       "fileChanges" : [
         {
-          "type" : "added",
           "changes" : {
-            "addedLines" : 20,
-            "removedLines" : 0
+            "removedLines" : 0,
+            "addedLines" : 20
           },
           "id" : "E2DC0341-9409-4896-A301-6ED86A24CA01",
-          "path" : "ProgressBar.swift"
+          "path" : "ProgressBar.swift",
+          "type" : "added"
         }
       ],
       "content" : "FILE: FitTrack\/Generated\/Views\/ProgressBar.swift\n```swift\nimport SwiftUI\n\nstruct ProgressBar: View {\n    let progress: Double\n    \n    var body: some View {\n        GeometryReader { geometry in\n            ZStack(alignment: .leading) {\n                Rectangle()\n                    .foregroundColor(Color(.systemGray5))\n                \n                Rectangle()\n                    .foregroundColor(.purple)\n                    .frame(width: geometry.size.width * progress)\n            }\n        }\n        .frame(height: 8)\n        .cornerRadius(4)\n    }\n}\n```\nEND_FILE"
     },
     {
       "id" : "BEB49020-5231-4C95-AD0B-CA6321E12769",
-      "timestamp" : 767302209.069943,
       "role" : "user",
+      "timestamp" : 767302209.069943,
       "content" : "Когда нажимаешь на цель во вкладке goals - вылезает окно в котором ничего нет, исправь это"
     },
     {
       "id" : "CC0AB8A8-843F-4388-821D-20CC0DE4A43A",
-      "timestamp" : 767302233.060491,
       "role" : "assistant",
+      "timestamp" : 767302233.060491,
       "fileChanges" : [
         {
           "path" : "GoalsView.swift",
           "type" : "modified",
+          "id" : "02E715F7-8C51-42C8-AC33-2F9102C34986",
           "changes" : {
-            "removedLines" : 0,
-            "addedLines" : 3
-          },
-          "id" : "02E715F7-8C51-42C8-AC33-2F9102C34986"
+            "addedLines" : 3,
+            "removedLines" : 0
+          }
         }
       ],
       "content" : "FILE: FitTrack\/Generated\/Views\/GoalsView.swift\n```swift\nimport SwiftUI\n\nstruct GoalsView: View {\n    @ObservedObject var viewModel: WorkoutViewModel\n    @State private var showingAddGoal = false\n    @State private var sortOption: GoalSortOption = .deadline\n    @State private var filterOption: GoalFilterOption = .all\n    @State private var selectedGoal: Goal?\n    @State private var showingProgressSheet = false\n    \n    var filteredAndSortedGoals: [Goal] {\n        let filtered = viewModel.goals.filter { goal in\n            switch filterOption {\n            case .all: return true\n            case .active: return !viewModel.isGoalCompleted(goal)\n            case .completed: return viewModel.isGoalCompleted(goal)\n            }\n        }\n        \n        return filtered.sorted { goal1, goal2 in\n            switch sortOption {\n            case .deadline:\n                return goal1.deadline < goal2.deadline\n            case .progress:\n                return viewModel.calculateGoalProgress(goal1) > viewModel.calculateGoalProgress(goal2)\n            case .name:\n                return goal1.title < goal2.title\n            }\n        }\n    }\n    \n    var body: some View {\n        NavigationView {\n            VStack(spacing: 0) {\n                filterAndSortHeader\n                \n                List {\n                    ForEach(filteredAndSortedGoals) { goal in\n                        GoalRow(goal: goal,\n                               progress: viewModel.calculateGoalProgress(goal),\n                               daysRemaining: viewModel.daysRemaining(for: goal))\n                            .contentShape(Rectangle())\n                            .onTapGesture {\n                                selectedGoal = goal\n                                showingProgressSheet = true\n                            }\n                    }\n                    .onDelete(perform: deleteGoal)\n                }\n            }\n            .navigationTitle(\"Goals\")\n            .toolbar {\n                ToolbarItem(placement: .navigationBarTrailing) {\n                    Button(action: { showingAddGoal = true }) {\n                        Image(systemName: \"plus\")\n                    }\n                }\n            }\n            .sheet(isPresented: $showingAddGoal) {\n                AddGoalView(viewModel: viewModel)\n            }\n            .sheet(item: $selectedGoal) { goal in\n                UpdateProgressView(viewModel: viewModel, goal: goal) {\n                    selectedGoal = nil\n                }\n            }\n        }\n    }\n    \n    private var filterAndSortHeader: some View {\n        VStack(spacing: 8) {\n            Picker(\"Filter\", selection: $filterOption) {\n                ForEach(GoalFilterOption.allCases, id: \\.self) { option in\n                    Text(option.rawValue).tag(option)\n                }\n            }\n            .pickerStyle(.segmented)\n            .padding(.horizontal)\n            \n            Picker(\"Sort by\", selection: $sortOption) {\n                ForEach(GoalSortOption.allCases, id: \\.self) { option in\n                    Text(option.rawValue).tag(option)\n                }\n            }\n            .pickerStyle(.menu)\n        }\n        .padding(.vertical, 8)\n        .background(Color(.systemBackground))\n    }\n    \n    private func deleteGoal(at offsets: IndexSet) {\n        viewModel.deleteGoals(at: offsets)\n    }\n}\n\nstruct GoalRow: View {\n    let goal: Goal\n    let progress: Double\n    let daysRemaining: Int\n    \n    var body: some View {\n        VStack(alignment: .leading, spacing: 10) {\n            HStack {\n                Text(goal.title)\n                    .font(.headline)\n                Spacer()\n                Text(\"\\(Int(progress * 100))%\")\n                    .foregroundColor(.purple)\n                    .bold()\n            }\n            \n            ProgressBar(progress: progress)\n            \n            HStack {\n                Text(goal.type.rawValue)\n                    .font(.subheadline)\n                    .foregroundColor(.secondary)\n                \n                Spacer()\n                \n                HStack(spacing: 4) {\n                    Image(systemName: \"calendar\")\n                        .foregroundColor(.secondary)\n                    Text(daysRemaining == 0 ? \"Due today\" :\n                            daysRemaining < 0 ? \"Overdue\" :\n                            \"\\(daysRemaining) days left\")\n                        .font(.subheadline)\n                        .foregroundColor(daysRemaining <= 0 ? .red : .secondary)\n                }\n                \n                Text(\"Target: \\(goal.target)\")\n                    .font(.subheadline)\n                    .foregroundColor(.secondary)\n            }\n        }\n        .padding(.vertical, 8)\n    }\n}\n\nstruct UpdateProgressView: View {\n    @ObservedObject var viewModel: WorkoutViewModel\n    let goal: Goal\n    let dismissAction: () -> Void\n    @State private var progress: Double\n    @Environment(\\.dismiss) private var dismiss\n    \n    init(viewModel: WorkoutViewModel, goal: Goal, dismissAction: @escaping () -> Void) {\n        self.viewModel = viewModel\n        self.goal = goal\n        self.dismissAction = dismissAction\n        _progress = State(initialValue: (goal.manualProgress ?? viewModel.calculateGoalProgress(goal)) * 100)\n    }\n    \n    var body: some View {\n        NavigationView {\n            Form {\n                Section(header: Text(\"Update Progress\")) {\n                    VStack(alignment: .leading, spacing: 10) {\n                        Text(\"Goal: \\(goal.title)\")\n                            .font(.headline)\n                        \n                        Text(\"Target: \\(goal.target) \\(goal.type.rawValue)\")\n                            .foregroundColor(.secondary)\n                        \n                        Slider(value: $progress, in: 0...100, step: 1) {\n                            Text(\"Progress\")\n                        }\n                        \n                        Text(\"Progress: \\(Int(progress))%\")\n                            .foregroundColor(.purple)\n                            .bold()\n                    }\n                    .padding(.vertical, 8)\n                }\n                \n                Section {\n                    Button(\"Mark as Complete\") {\n                        viewModel.updateGoalProgress(goal, progress: 1.0)\n                        dismiss()\n                    }\n                    .foregroundColor(.green)\n                    \n                    if progress < 100 {\n                        Button(\"Update Progress\") {\n                            viewModel.updateGoalProgress(goal, progress: progress \/ 100)\n                            dismiss()\n                        }\n                        .foregroundColor(.purple)\n                    }\n                }\n            }\n            .navigationTitle(\"Update Progress\")\n            .navigationBarTitleDisplayMode(.inline)\n            .toolbar {\n                ToolbarItem(placement: .cancellationAction) {\n                    Button(\"Cancel\") {\n                        dismiss()\n                    }\n                }\n            }\n        }\n    }\n}\n```\nEND_FILE"
     },
     {
       "id" : "D36AB2C8-7B72-4B7C-8EB3-953617D0F2C9",
-      "timestamp" : 767302361.03132,
       "role" : "user",
+      "timestamp" : 767302361.03132,
       "content" : "Если пользователь выполнил цель и отметил это - отметь это на вкладке Dashboard, убрав её из Active Goals"
     },
     {
       "id" : "FD211BE5-4B6B-42FE-814B-CBEAC5F2196C",
-      "timestamp" : 767302395.195183,
       "role" : "assistant",
+      "timestamp" : 767302395.195183,
       "fileChanges" : [
         {
-          "path" : "DashboardView.swift",
-          "type" : "modified",
           "id" : "6A5021A3-4857-42DF-8D33-70069ACE175E",
+          "type" : "modified",
+          "path" : "DashboardView.swift",
           "changes" : {
-            "addedLines" : 41,
-            "removedLines" : 0
+            "removedLines" : 0,
+            "addedLines" : 41
           }
         },
         {
-          "path" : "WorkoutModel.swift",
-          "type" : "modified",
           "id" : "256EC6CB-ACCB-4F50-92E0-9272821B1B43",
+          "type" : "modified",
+          "path" : "WorkoutModel.swift",
           "changes" : {
-            "addedLines" : 2,
-            "removedLines" : 0
+            "removedLines" : 0,
+            "addedLines" : 2
           }
         },
         {
-          "path" : "WorkoutViewModel.swift",
-          "type" : "modified",
           "id" : "275DBBA6-1CA9-4C19-861C-961821364002",
+          "type" : "modified",
+          "path" : "WorkoutViewModel.swift",
           "changes" : {
-            "addedLines" : 0,
-            "removedLines" : 5
+            "removedLines" : 5,
+            "addedLines" : 0
           }
         }
       ],
@@ -364,23 +361,23 @@
     },
     {
       "id" : "0904BA1F-0877-490F-901F-7AB1E363189B",
-      "timestamp" : 767302519.86708,
       "role" : "user",
+      "timestamp" : 767302519.86708,
       "content" : "Добавь возможность удалять карточки в goals и workouts"
     },
     {
       "id" : "7A7C00F0-91C7-4623-81E7-860E25D918A5",
-      "timestamp" : 767302553.732629,
       "role" : "assistant",
+      "timestamp" : 767302553.732629,
       "fileChanges" : [
         {
           "id" : "88B1C931-E687-4C0A-B59B-F6832BBA909B",
           "changes" : {
-            "addedLines" : 0,
-            "removedLines" : 94
+            "removedLines" : 94,
+            "addedLines" : 0
           },
-          "path" : "GoalsView.swift",
-          "type" : "modified"
+          "type" : "modified",
+          "path" : "GoalsView.swift"
         },
         {
           "id" : "B36F0408-D211-44DD-B376-9FC196736190",
@@ -388,8 +385,8 @@
             "removedLines" : 0,
             "addedLines" : 12
           },
-          "path" : "WorkoutViewModel.swift",
-          "type" : "modified"
+          "type" : "modified",
+          "path" : "WorkoutViewModel.swift"
         },
         {
           "id" : "C4D849C5-9030-44FC-9E46-1937A8685258",
@@ -397,18 +394,42 @@
             "removedLines" : 16,
             "addedLines" : 0
           },
-          "path" : "WorkoutListView.swift",
-          "type" : "modified"
+          "type" : "modified",
+          "path" : "WorkoutListView.swift"
         }
       ],
       "content" : "FILE: FitTrack\/Generated\/ViewModels\/WorkoutViewModel.swift\n```swift\nimport Foundation\n\nclass WorkoutViewModel: ObservableObject {\n    @Published var workouts: [Workout] = []\n    @Published var goals: [Goal] = []\n    \n    var recentWorkouts: [Workout] {\n        Array(workouts.prefix(5))\n    }\n    \n    var activeGoals: [Goal] {\n        goals.filter { !$0.isCompleted }\n    }\n    \n    var workoutsThisWeek: Int {\n        let calendar = Calendar.current\n        let oneWeekAgo = calendar.date(byAdding: .day, value: -7, to: Date())!\n        return workouts.filter { $0.date >= oneWeekAgo }.count\n    }\n    \n    var currentStreak: Int {\n        var streak = 0\n        let calendar = Calendar.current\n        var currentDate = Date()\n        \n        while let workout = workouts.first(where: { calendar.isDate($0.date, inSameDayAs: currentDate) }) {\n            streak += 1\n            currentDate = calendar.date(byAdding: .day, value: -1, to: currentDate)!\n        }\n        \n        return streak\n    }\n    \n    func addWorkout(_ workout: Workout) {\n        workouts.append(workout)\n        workouts.sort { $0.date > $1.date }\n    }\n    \n    func deleteWorkouts(at offsets: IndexSet) {\n        workouts.remove(atOffsets: offsets)\n    }\n    \n    func deleteWorkout(_ workout: Workout) {\n        if let index = workouts.firstIndex(where: { $0.id == workout.id }) {\n            workouts.remove(at: index)\n        }\n    }\n    \n    func addGoal(_ goal: Goal) {\n        goals.append(goal)\n    }\n    \n    func deleteGoals(at offsets: IndexSet) {\n        goals.remove(atOffsets: offsets)\n    }\n    \n    func deleteGoal(_ goal: Goal) {\n        if let index = goals.firstIndex(where: { $0.id == goal.id }) {\n            goals.remove(at: index)\n        }\n    }\n    \n    func calculateGoalProgress(_ goal: Goal) -> Double {\n        if goal.isCompleted {\n            return 1.0\n        }\n        \n        if let manualProgress = goal.manualProgress {\n            return manualProgress\n        }\n        \n        switch goal.type {\n        case .workouts:\n            let completedWorkouts = workouts.filter { $0.date <= goal.deadline }.count\n            return min(Double(completedWorkouts) \/ Double(goal.target), 1.0)\n            \n        case .minutes:\n            let totalMinutes = workouts\n                .filter { $0.date <= goal.deadline }\n                .reduce(0) { $0 + $1.duration }\n            return min(Double(totalMinutes) \/ Double(goal.target), 1.0)\n            \n        case .calories:\n            let caloriesPerMinute = 5\n            let totalCalories = workouts\n                .filter { $0.date <= goal.deadline }\n                .reduce(0) { $0 + ($1.duration * caloriesPerMinute) }\n            return min(Double(totalCalories) \/ Double(goal.target), 1.0)\n        }\n    }\n    \n    func daysRemaining(for goal: Goal) -> Int {\n        let calendar = Calendar.current\n        let today = calendar.startOfDay(for: Date())\n        let deadline = calendar.startOfDay(for: goal.deadline)\n        return calendar.dateComponents([.day], from: today, to: deadline).day ?? 0\n    }\n    \n    func isGoalCompleted(_ goal: Goal) -> Bool {\n        return goal.isCompleted\n    }\n    \n    func updateGoalProgress(_ goal: Goal, progress: Double) {\n        if let index = goals.firstIndex(where: { $0.id == goal.id }) {\n            goals[index] = Goal(\n                id: goal.id,\n                title: goal.title,\n                type: goal.type,\n                target: goal.target,\n                deadline: goal.deadline,\n                manualProgress: progress,\n                isCompleted: progress >= 1.0\n            )\n        }\n        objectWillChange.send()\n    }\n}\n```\nEND_FILE\n\nFILE: FitTrack\/Generated\/Views\/GoalsView.swift\n```swift\nimport SwiftUI\n\nstruct GoalsView: View {\n    @ObservedObject var viewModel: WorkoutViewModel\n    @State private var showingAddGoal = false\n    @State private var sortOption: GoalSortOption = .deadline\n    @State private var filterOption: GoalFilterOption = .all\n    @State private var selectedGoal: Goal?\n    @State private var showingProgressSheet = false\n    @State private var showingDeleteAlert = false\n    @State private var goalToDelete: Goal?\n    \n    var filteredAndSortedGoals: [Goal] {\n        let filtered = viewModel.goals.filter { goal in\n            switch filterOption {\n            case .all: return true\n            case .active: return !viewModel.isGoalCompleted(goal)\n            case .completed: return viewModel.isGoalCompleted(goal)\n            }\n        }\n        \n        return filtered.sorted { goal1, goal2 in\n            switch sortOption {\n            case .deadline:\n                return goal1.deadline < goal2.deadline\n            case .progress:\n                return viewModel.calculateGoalProgress(goal1) > viewModel.calculateGoalProgress(goal2)\n            case .name:\n                return goal1.title < goal2.title\n            }\n        }\n    }\n    \n    var body: some View {\n        NavigationView {\n            VStack(spacing: 0) {\n                filterAndSortHeader\n                \n                List {\n                    ForEach(filteredAndSortedGoals) { goal in\n                        GoalRow(goal: goal,\n                               progress: viewModel.calculateGoalProgress(goal),\n                               daysRemaining: viewModel.daysRemaining(for: goal))\n                        .contentShape(Rectangle())\n                        .onTapGesture {\n                            selectedGoal = goal\n                            showingProgressSheet = true\n                        }\n                        .swipeActions(edge: .trailing, allowsFullSwipe: true) {\n                            Button(role: .destructive) {\n                                goalToDelete = goal\n                                showingDeleteAlert = true\n                            } label: {\n                                Label(\"Delete\", systemImage: \"trash\")\n                            }\n                        }\n                    }\n                }\n            }\n            .navigationTitle(\"Goals\")\n            .toolbar {\n                ToolbarItem(placement: .navigationBarTrailing) {\n                    Button(action: { showingAddGoal = true }) {\n                        Image(systemName: \"plus\")\n                    }\n                }\n            }\n            .sheet(isPresented: $showingAddGoal) {\n                AddGoalView(viewModel: viewModel)\n            }\n            .sheet(item: $selectedGoal) { goal in\n                UpdateProgressView(viewModel: viewModel, goal: goal) {\n                    selectedGoal = nil\n                }\n            }\n            .alert(\"Delete Goal\", isPresented: $showingDeleteAlert, presenting: goalToDelete) { goal in\n                Button(\"Delete\", role: .destructive) {\n                    withAnimation {\n                        viewModel.deleteGoal(goal)\n                    }\n                }\n                Button(\"Cancel\", role: .cancel) {}\n            } message: { goal in\n                Text(\"Are you sure you want to delete '\\(goal.title)'?\")\n            }\n        }\n    }\n    \n    private var filterAndSortHeader: some View {\n        VStack(spacing: 8) {\n            Picker(\"Filter\", selection: $filterOption) {\n                ForEach(GoalFilterOption.allCases, id: \\.self) { option in\n                    Text(option.rawValue).tag(option)\n                }\n            }\n            .pickerStyle(.segmented)\n            .padding(.horizontal)\n            \n            Picker(\"Sort by\", selection: $sortOption) {\n                ForEach(GoalSortOption.allCases, id: \\.self) { option in\n                    Text(option.rawValue).tag(option)\n                }\n            }\n            .pickerStyle(.menu)\n        }\n        .padding(.vertical, 8)\n        .background(Color(.systemBackground))\n    }\n}\n```\nEND_FILE\n\nFILE: FitTrack\/Generated\/Views\/WorkoutListView.swift\n```swift\nimport SwiftUI\n\nstruct WorkoutListView: View {\n    @ObservedObject var viewModel: WorkoutViewModel\n    @State private var showingAddWorkout = false\n    @State private var searchText = \"\"\n    @State private var showingDeleteAlert = false\n    @State private var workoutToDelete: Workout?\n    \n    var filteredWorkouts: [Workout] {\n        if searchText.isEmpty {\n            return viewModel.workouts\n        } else {\n            return viewModel.workouts.filter { $0.name.localizedCaseInsensitiveContains(searchText) }\n        }\n    }\n    \n    var body: some View {\n        NavigationView {\n            List {\n                ForEach(filteredWorkouts) { workout in\n                    NavigationLink(destination: WorkoutDetailView(workout: workout)) {\n                        WorkoutRow(workout: workout)\n                    }\n                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {\n                        Button(role: .destructive) {\n                            workoutToDelete = workout\n                            showingDeleteAlert = true\n                        } label: {\n                            Label(\"Delete\", systemImage: \"trash\")\n                        }\n                    }\n                }\n            }\n            .navigationTitle(\"Workouts\")\n            .searchable(text: $searchText)\n            .toolbar {\n                ToolbarItem(placement: .navigationBarTrailing) {\n                    Button(action: { showingAddWorkout = true }) {\n                        Image(systemName: \"plus\")\n                    }\n                }\n            }\n            .sheet(isPresented: $showingAddWorkout) {\n                AddWorkoutView(viewModel: viewModel)\n            }\n            .alert(\"Delete Workout\", isPresented: $showingDeleteAlert, presenting: workoutToDelete) { workout in\n                Button(\"Delete\", role: .destructive) {\n                    withAnimation {\n                        viewModel.deleteWorkout(workout)\n                    }\n                }\n                Button(\"Cancel\", role: .cancel) {}\n            } message: { workout in\n                Text(\"Are you sure you want to delete '\\(workout.name)'?\")\n            }\n        }\n    }\n}\n```\nEND_FILE"
+    },
+    {
+      "id" : "DDFC6CE1-78EE-4157-80DF-76789461B58A",
+      "role" : "user",
+      "timestamp" : 767302565.588593,
+      "content" : "\/Users\/workcar\/Documents\/gen project\/FitTrack\/FitTrack\/Generated\/FitTrack\/Generated\/Views\/DashboardView.swift:141:17 Cannot find 'WorkoutRow' in scope"
+    },
+    {
+      "id" : "FB7F68BC-403C-481E-A125-2A59915E37DB",
+      "role" : "assistant",
+      "timestamp" : 767302572.090489,
+      "fileChanges" : [
+        {
+          "path" : "WorkoutRow.swift",
+          "changes" : {
+            "addedLines" : 39,
+            "removedLines" : 0
+          },
+          "type" : "added",
+          "id" : "383DB939-F9EA-48EC-9A31-8718F2E0E2D0"
+        }
+      ],
+      "content" : "FILE: FitTrack\/Generated\/Views\/WorkoutRow.swift\n```swift\nimport SwiftUI\n\nstruct WorkoutRow: View {\n    let workout: Workout\n    \n    var body: some View {\n        HStack {\n            Image(systemName: workout.type.icon)\n                .foregroundColor(.purple)\n                .font(.title2)\n                .frame(width: 40)\n            \n            VStack(alignment: .leading, spacing: 4) {\n                Text(workout.name)\n                    .font(.headline)\n                \n                HStack {\n                    Text(workout.type.rawValue)\n                        .font(.subheadline)\n                        .foregroundColor(.secondary)\n                    \n                    Text(\"•\")\n                        .foregroundColor(.secondary)\n                    \n                    Text(\"\\(workout.duration) min\")\n                        .font(.subheadline)\n                        .foregroundColor(.secondary)\n                }\n            }\n            \n            Spacer()\n            \n            Text(workout.date.formatted(date: .numeric, time: .omitted))\n                .font(.subheadline)\n                .foregroundColor(.secondary)\n        }\n        .padding(.vertical, 8)\n    }\n}\n```\nEND_FILE"
     }
   ],
-  "id" : "B315E9BF-B093-4964-B705-D7CD6337CD4F",
   "files" : [
-    "\/Users\/workcar\/Documents\/gen project\/FitTrack\/FitTrack\/Generated\/FitTrack\/Generated\/Views\/WorkoutListView.swift",
-    "\/Users\/workcar\/Documents\/gen project\/FitTrack\/FitTrack\/Generated\/FitTrack\/Generated\/Views\/GoalsView.swift",
-    "\/Users\/workcar\/Documents\/gen project\/FitTrack\/FitTrack\/Generated\/FitTrack\/Generated\/ViewModels\/WorkoutViewModel.swift"
+    "\/Users\/workcar\/Documents\/gen project\/FitTrack\/FitTrack\/Generated\/FitTrack\/Generated\/Views\/WorkoutRow.swift"
   ],
-  "teamId" : "com.FitTrack.ft3025"
+  "teamId" : "com.FitTrack.ft3025",
+  "name" : "FitTrack",
+  "bundleId" : "com.FitTrack.ft3025",
+  "template" : "AppProject",
+  "id" : "B315E9BF-B093-4964-B705-D7CD6337CD4F"
 }
