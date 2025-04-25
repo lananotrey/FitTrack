@@ -22,7 +22,7 @@ struct DashboardView: View {
                 .padding()
             }
             .navigationTitle("Dashboard")
-            .background(Color(.systemGray6))
+            .background(Color(.systemGroupedBackground))
         }
     }
 }
@@ -35,7 +35,7 @@ struct HeaderCard: View {
                 .bold()
             
             Text("Keep up the great work! 💪")
-                .foregroundColor(.secondary)
+                .foregroundColor(.white)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
@@ -71,15 +71,15 @@ struct ActiveGoalsSection: View {
                 Text("Active Goals")
                     .font(.title2)
                     .bold()
+                    .foregroundColor(.primary)
                 
                 ForEach(goals) { goal in
                     ActiveGoalRow(goal: goal)
                 }
             }
             .padding()
-            .background(Color.white)
+            .background(Color(.secondarySystemGroupedBackground))
             .cornerRadius(15)
-            .shadow(radius: 2)
         }
     }
 }
@@ -91,6 +91,7 @@ struct ActiveGoalRow: View {
         VStack(alignment: .leading, spacing: 8) {
             Text(goal.title)
                 .font(.headline)
+                .foregroundColor(.primary)
             
             Text("\(goal.target) \(goal.type.rawValue)")
                 .font(.subheadline)
@@ -119,12 +120,12 @@ struct StatCard: View {
             Text(value)
                 .font(.title2)
                 .bold()
+                .foregroundColor(.primary)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
-        .background(Color.white)
+        .background(Color(.secondarySystemGroupedBackground))
         .cornerRadius(15)
-        .shadow(radius: 2)
     }
 }
 
@@ -136,10 +137,15 @@ struct RecentWorkoutsSection: View {
             Text("Recent Workouts")
                 .font(.title2)
                 .bold()
+                .foregroundColor(.primary)
             
             ForEach(viewModel.recentWorkouts) { workout in
                 WorkoutRow(workout: workout)
+                    .padding(.vertical, 4)
             }
         }
+        .padding()
+        .background(Color(.secondarySystemGroupedBackground))
+        .cornerRadius(15)
     }
 }
