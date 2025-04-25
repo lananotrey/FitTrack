@@ -39,10 +39,11 @@ struct GoalsView: View {
                         GoalRow(goal: goal,
                                progress: viewModel.calculateGoalProgress(goal),
                                daysRemaining: viewModel.daysRemaining(for: goal))
-                        .onTapGesture {
-                            selectedGoal = goal
-                            showingProgressSheet = true
-                        }
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                selectedGoal = goal
+                                showingProgressSheet = true
+                            }
                     }
                     .onDelete(perform: deleteGoal)
                 }
@@ -58,11 +59,9 @@ struct GoalsView: View {
             .sheet(isPresented: $showingAddGoal) {
                 AddGoalView(viewModel: viewModel)
             }
-            .sheet(isPresented: $showingProgressSheet) {
-                if let goal = selectedGoal {
-                    UpdateProgressView(viewModel: viewModel, goal: goal) {
-                        showingProgressSheet = false
-                    }
+            .sheet(item: $selectedGoal) { goal in
+                UpdateProgressView(viewModel: viewModel, goal: goal) {
+                    selectedGoal = nil
                 }
             }
         }
@@ -143,6 +142,7 @@ struct UpdateProgressView: View {
     let goal: Goal
     let dismissAction: () -> Void
     @State private var progress: Double
+    @Environment(\.dismiss) private var dismiss
     
     init(viewModel: WorkoutViewModel, goal: Goal, dismissAction: @escaping () -> Void) {
         self.viewModel = viewModel
@@ -170,19 +170,20 @@ struct UpdateProgressView: View {
                             .foregroundColor(.purple)
                             .bold()
                     }
+                    .padding(.vertical, 8)
                 }
                 
                 Section {
                     Button("Mark as Complete") {
                         viewModel.updateGoalProgress(goal, progress: 1.0)
-                        dismissAction()
+                        dismiss()
                     }
                     .foregroundColor(.green)
                     
                     if progress < 100 {
                         Button("Update Progress") {
                             viewModel.updateGoalProgress(goal, progress: progress / 100)
-                            dismissAction()
+                            dismiss()
                         }
                         .foregroundColor(.purple)
                     }
@@ -192,7 +193,9 @@ struct UpdateProgressView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel", action: dismissAction)
+                    Button("Cancel") {
+                        dismiss()
+                    }
                 }
             }
         }
