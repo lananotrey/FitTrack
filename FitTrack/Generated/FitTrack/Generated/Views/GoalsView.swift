@@ -5,6 +5,8 @@ struct GoalsView: View {
     @State private var showingAddGoal = false
     @State private var sortOption: GoalSortOption = .deadline
     @State private var filterOption: GoalFilterOption = .all
+    @State private var selectedGoal: Goal?
+    @State private var showingProgressSheet = false
     
     var filteredAndSortedGoals: [Goal] {
         let filtered = viewModel.goals.filter { goal in
@@ -34,10 +36,13 @@ struct GoalsView: View {
                 
                 List {
                     ForEach(filteredAndSortedGoals) { goal in
-                        GoalRow(goal: goal, 
+                        GoalRow(goal: goal,
                                progress: viewModel.calculateGoalProgress(goal),
-                               daysRemaining: viewModel.daysRemaining(for: goal),
-                               onProgressTap: { viewModel.toggleGoalCompletion(goal) })
+                               daysRemaining: viewModel.daysRemaining(for: goal))
+                        .onTapGesture {
+                            selectedGoal = goal
+                            showingProgressSheet = true
+                        }
                     }
                     .onDelete(perform: deleteGoal)
                 }
@@ -52,6 +57,13 @@ struct GoalsView: View {
             }
             .sheet(isPresented: $showingAddGoal) {
                 AddGoalView(viewModel: viewModel)
+            }
+            .sheet(isPresented: $showingProgressSheet) {
+                if let goal = selectedGoal {
+                    UpdateProgressView(viewModel: viewModel, goal: goal) {
+                        showingProgressSheet = false
+                    }
+                }
             }
         }
     }
@@ -86,7 +98,6 @@ struct GoalRow: View {
     let goal: Goal
     let progress: Double
     let daysRemaining: Int
-    let onProgressTap: () -> Void
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -94,11 +105,9 @@ struct GoalRow: View {
                 Text(goal.title)
                     .font(.headline)
                 Spacer()
-                Button(action: onProgressTap) {
-                    Text("\(Int(progress * 100))%")
-                        .foregroundColor(.purple)
-                        .bold()
-                }
+                Text("\(Int(progress * 100))%")
+                    .foregroundColor(.purple)
+                    .bold()
             }
             
             ProgressBar(progress: progress)
@@ -126,40 +135,66 @@ struct GoalRow: View {
             }
         }
         .padding(.vertical, 8)
-        .contentShape(Rectangle())
-        .onTapGesture {
-            onProgressTap()
-        }
     }
 }
 
-struct ProgressBar: View {
-    let progress: Double
+struct UpdateProgressView: View {
+    @ObservedObject var viewModel: WorkoutViewModel
+    let goal: Goal
+    let dismissAction: () -> Void
+    @State private var progress: Double
+    
+    init(viewModel: WorkoutViewModel, goal: Goal, dismissAction: @escaping () -> Void) {
+        self.viewModel = viewModel
+        self.goal = goal
+        self.dismissAction = dismissAction
+        _progress = State(initialValue: (goal.manualProgress ?? viewModel.calculateGoalProgress(goal)) * 100)
+    }
     
     var body: some View {
-        GeometryReader { geometry in
-            ZStack(alignment: .leading) {
-                Rectangle()
-                    .foregroundColor(Color(.systemGray5))
+        NavigationView {
+            Form {
+                Section(header: Text("Update Progress")) {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Goal: \(goal.title)")
+                            .font(.headline)
+                        
+                        Text("Target: \(goal.target) \(goal.type.rawValue)")
+                            .foregroundColor(.secondary)
+                        
+                        Slider(value: $progress, in: 0...100, step: 1) {
+                            Text("Progress")
+                        }
+                        
+                        Text("Progress: \(Int(progress))%")
+                            .foregroundColor(.purple)
+                            .bold()
+                    }
+                }
                 
-                Rectangle()
-                    .foregroundColor(.purple)
-                    .frame(width: geometry.size.width * progress)
+                Section {
+                    Button("Mark as Complete") {
+                        viewModel.updateGoalProgress(goal, progress: 1.0)
+                        dismissAction()
+                    }
+                    .foregroundColor(.green)
+                    
+                    if progress < 100 {
+                        Button("Update Progress") {
+                            viewModel.updateGoalProgress(goal, progress: progress / 100)
+                            dismissAction()
+                        }
+                        .foregroundColor(.purple)
+                    }
+                }
+            }
+            .navigationTitle("Update Progress")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel", action: dismissAction)
+                }
             }
         }
-        .frame(height: 8)
-        .cornerRadius(4)
     }
-}
-
-enum GoalSortOption: String, CaseIterable {
-    case deadline = "Deadline"
-    case progress = "Progress"
-    case name = "Name"
-}
-
-enum GoalFilterOption: String, CaseIterable {
-    case all = "All"
-    case active = "Active"
-    case completed = "Completed"
 }

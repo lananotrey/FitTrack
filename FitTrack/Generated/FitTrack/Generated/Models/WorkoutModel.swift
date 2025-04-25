@@ -42,13 +42,15 @@ struct Goal: Identifiable, Codable {
     let type: GoalType
     let target: Int
     let deadline: Date
+    var manualProgress: Double?
     
-    init(id: UUID = UUID(), title: String, type: GoalType, target: Int, deadline: Date) {
+    init(id: UUID = UUID(), title: String, type: GoalType, target: Int, deadline: Date, manualProgress: Double? = nil) {
         self.id = id
         self.title = title
         self.type = type
         self.target = target
         self.deadline = deadline
+        self.manualProgress = manualProgress
     }
 }
 

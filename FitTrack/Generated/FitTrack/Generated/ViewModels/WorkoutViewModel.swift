@@ -49,6 +49,10 @@ class WorkoutViewModel: ObservableObject {
     }
     
     func calculateGoalProgress(_ goal: Goal) -> Double {
+        if let manualProgress = goal.manualProgress {
+            return manualProgress
+        }
+        
         if isGoalCompleted(goal) {
             return 1.0
         }
@@ -84,11 +88,22 @@ class WorkoutViewModel: ObservableObject {
         completedGoals.contains(goal.id)
     }
     
-    func toggleGoalCompletion(_ goal: Goal) {
-        if completedGoals.contains(goal.id) {
-            completedGoals.remove(goal.id)
-        } else {
+    func updateGoalProgress(_ goal: Goal, progress: Double) {
+        if progress >= 1.0 {
             completedGoals.insert(goal.id)
+        } else {
+            completedGoals.remove(goal.id)
+        }
+        
+        if let index = goals.firstIndex(where: { $0.id == goal.id }) {
+            goals[index] = Goal(
+                id: goal.id,
+                title: goal.title,
+                type: goal.type,
+                target: goal.target,
+                deadline: goal.deadline,
+                manualProgress: progress
+            )
         }
         objectWillChange.send()
     }
