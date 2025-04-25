@@ -7,36 +7,72 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text("Appearance")) {
+                Section(header: Text("Appearance").foregroundColor(.primary)) {
                     Toggle(isOn: $isDarkMode) {
-                        Label("Dark Mode", systemImage: "moon.fill")
+                        Label {
+                            Text("Dark Mode")
+                                .foregroundColor(.primary)
+                        } icon: {
+                            Image(systemName: "moon.fill")
+                                .foregroundColor(.purple)
+                        }
                     }
+                    .tint(.purple)
                     .onChange(of: isDarkMode) { _ in
                         updateAppearance()
                     }
                 }
                 
-                Section(header: Text("About")) {
+                Section(header: Text("About").foregroundColor(.primary)) {
                     Button(action: rateApp) {
-                        Label("Rate this app", systemImage: "star.fill")
+                        Label {
+                            Text("Rate this app")
+                                .foregroundColor(.primary)
+                        } icon: {
+                            Image(systemName: "star.fill")
+                                .foregroundColor(.purple)
+                        }
                     }
                     
                     Button(action: shareApp) {
-                        Label("Share this app", systemImage: "square.and.arrow.up")
+                        Label {
+                            Text("Share this app")
+                                .foregroundColor(.primary)
+                        } icon: {
+                            Image(systemName: "square.and.arrow.up")
+                                .foregroundColor(.purple)
+                        }
                     }
                     
-                    NavigationLink(destination: TermsOfUseView()) {
-                        Label("Terms of Use", systemImage: "doc.text")
+                    NavigationLink {
+                        TermsOfUseView()
+                    } label: {
+                        Label {
+                            Text("Terms of Use")
+                                .foregroundColor(.primary)
+                        } icon: {
+                            Image(systemName: "doc.text")
+                                .foregroundColor(.purple)
+                        }
                     }
                     
-                    NavigationLink(destination: PrivacyPolicyView()) {
-                        Label("Privacy Policy", systemImage: "lock.shield")
+                    NavigationLink {
+                        PrivacyPolicyView()
+                    } label: {
+                        Label {
+                            Text("Privacy Policy")
+                                .foregroundColor(.primary)
+                        } icon: {
+                            Image(systemName: "lock.shield")
+                                .foregroundColor(.purple)
+                        }
                     }
                 }
                 
-                Section(header: Text("App Info")) {
+                Section(header: Text("App Info").foregroundColor(.primary)) {
                     HStack {
                         Text("Version")
+                            .foregroundColor(.primary)
                         Spacer()
                         Text(Bundle.main.appVersionLong)
                             .foregroundColor(.secondary)
@@ -44,6 +80,7 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Settings")
+            .background(Color(UIColor.systemBackground))
         }
     }
     
