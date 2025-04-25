@@ -34,20 +34,25 @@ class WorkoutViewModel: ObservableObject {
     func addWorkout(_ workout: Workout) {
         workouts.append(workout)
         workouts.sort { $0.date > $1.date }
+        updateGoalsProgress()
     }
     
     func deleteWorkouts(at offsets: IndexSet) {
         workouts.remove(atOffsets: offsets)
+        updateGoalsProgress()
     }
     
     func deleteWorkout(_ workout: Workout) {
         if let index = workouts.firstIndex(where: { $0.id == workout.id }) {
             workouts.remove(at: index)
+            updateGoalsProgress()
         }
     }
     
     func addGoal(_ goal: Goal) {
-        goals.append(goal)
+        var newGoal = goal
+        newGoal.manualProgress = 0.0
+        goals.append(newGoal)
     }
     
     func deleteGoals(at offsets: IndexSet) {
@@ -60,6 +65,15 @@ class WorkoutViewModel: ObservableObject {
         }
     }
     
+    private func updateGoalsProgress() {
+        for (index, goal) in goals.enumerated() {
+            let progress = calculateGoalProgress(goal)
+            goals[index].manualProgress = progress
+            goals[index].isCompleted = progress >= 1.0
+        }
+        objectWillChange.send()
+    }
+    
     func calculateGoalProgress(_ goal: Goal) -> Double {
         if goal.isCompleted {
             return 1.0
@@ -69,23 +83,21 @@ class WorkoutViewModel: ObservableObject {
             return manualProgress
         }
         
+        let relevantWorkouts = workouts.filter { $0.date <= goal.deadline }
+        
         switch goal.type {
         case .workouts:
-            let completedWorkouts = workouts.filter { $0.date <= goal.deadline }.count
-            return min(Double(completedWorkouts) / Double(goal.target), 1.0)
+            let completedWorkouts = Double(relevantWorkouts.count)
+            return min(completedWorkouts / Double(goal.target), 1.0)
             
         case .minutes:
-            let totalMinutes = workouts
-                .filter { $0.date <= goal.deadline }
-                .reduce(0) { $0 + $1.duration }
-            return min(Double(totalMinutes) / Double(goal.target), 1.0)
+            let totalMinutes = Double(relevantWorkouts.reduce(0) { $0 + $1.duration })
+            return min(totalMinutes / Double(goal.target), 1.0)
             
         case .calories:
             let caloriesPerMinute = 5
-            let totalCalories = workouts
-                .filter { $0.date <= goal.deadline }
-                .reduce(0) { $0 + ($1.duration * caloriesPerMinute) }
-            return min(Double(totalCalories) / Double(goal.target), 1.0)
+            let totalCalories = Double(relevantWorkouts.reduce(0) { $0 + ($1.duration * caloriesPerMinute) })
+            return min(totalCalories / Double(goal.target), 1.0)
         }
     }
     
