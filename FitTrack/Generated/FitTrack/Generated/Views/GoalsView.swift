@@ -10,16 +10,18 @@ struct GoalsView: View {
     @State private var showingDeleteAlert = false
     @State private var goalToDelete: Goal?
     
-    var filteredAndSortedGoals: [Goal] {
-        let filtered = viewModel.goals.filter { goal in
+    private var filteredGoals: [Goal] {
+        viewModel.goals.filter { goal in
             switch filterOption {
             case .all: return true
             case .active: return !viewModel.isGoalCompleted(goal)
             case .completed: return viewModel.isGoalCompleted(goal)
             }
         }
-        
-        return filtered.sorted { goal1, goal2 in
+    }
+    
+    private var sortedGoals: [Goal] {
+        filteredGoals.sorted { goal1, goal2 in
             switch sortOption {
             case .deadline:
                 return goal1.deadline < goal2.deadline
@@ -37,10 +39,12 @@ struct GoalsView: View {
                 filterAndSortHeader
                 
                 List {
-                    ForEach(filteredAndSortedGoals) { goal in
-                        GoalRow(goal: goal,
-                               progress: viewModel.calculateGoalProgress(goal),
-                               daysRemaining: viewModel.daysRemaining(for: goal))
+                    ForEach(sortedGoals) { goal in
+                        GoalRow(
+                            goal: goal,
+                            progress: viewModel.calculateGoalProgress(goal),
+                            daysRemaining: viewModel.daysRemaining(for: goal)
+                        )
                         .contentShape(Rectangle())
                         .onTapGesture {
                             selectedGoal = goal
