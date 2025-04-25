@@ -18,7 +18,7 @@ struct ContentView: View {
                         }
                         .tag(0)
                     
-                    WorkoutListView(viewModel: workoutViewModel)
+                    WorkoutListView(viewModel: workoutViewModel, selectedTab: $selectedTab)
                         .tabItem {
                             Image(systemName: "figure.run")
                             Text("Workouts")

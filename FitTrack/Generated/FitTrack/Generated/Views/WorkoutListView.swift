@@ -2,6 +2,7 @@ import SwiftUI
 
 struct WorkoutListView: View {
     @ObservedObject var viewModel: WorkoutViewModel
+    @Binding var selectedTab: Int
     @State private var showingAddWorkout = false
     @State private var searchText = ""
     @State private var showingDeleteAlert = false
@@ -42,7 +43,7 @@ struct WorkoutListView: View {
                 }
             }
             .sheet(isPresented: $showingAddWorkout) {
-                AddWorkoutView(viewModel: viewModel)
+                AddWorkoutView(viewModel: viewModel, selectedTab: $selectedTab)
             }
             .alert("Delete Workout", isPresented: $showingDeleteAlert, presenting: workoutToDelete) { workout in
                 Button("Delete", role: .destructive) {

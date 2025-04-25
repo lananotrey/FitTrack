@@ -3,12 +3,14 @@ import SwiftUI
 struct AddWorkoutView: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject var viewModel: WorkoutViewModel
+    @Binding var selectedTab: Int
     
     @State private var workoutName = ""
     @State private var workoutType: WorkoutType = .cardio
     @State private var durationString = ""
     @State private var date = Date()
     @State private var notes = ""
+    @State private var showingSuccessAlert = false
     
     var duration: Int {
         return Int(durationString) ?? 0
@@ -63,6 +65,15 @@ struct AddWorkoutView: View {
                     .disabled(!isValidInput)
                 }
             }
+            .alert("Success", isPresented: $showingSuccessAlert) {
+                Button("OK") {
+                    clearFields()
+                    selectedTab = 0
+                    dismiss()
+                }
+            } message: {
+                Text("Workout added successfully!")
+            }
         }
     }
     
@@ -75,6 +86,14 @@ struct AddWorkoutView: View {
             notes: notes.isEmpty ? nil : notes
         )
         viewModel.addWorkout(workout)
-        dismiss()
+        showingSuccessAlert = true
+    }
+    
+    private func clearFields() {
+        workoutName = ""
+        workoutType = .cardio
+        durationString = ""
+        date = Date()
+        notes = ""
     }
 }
