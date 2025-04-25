@@ -3,10 +3,13 @@ import Foundation
 class WorkoutViewModel: ObservableObject {
     @Published var workouts: [Workout] = []
     @Published var goals: [Goal] = []
-    @Published private var completedGoals: Set<UUID> = []
     
     var recentWorkouts: [Workout] {
         Array(workouts.prefix(5))
+    }
+    
+    var activeGoals: [Goal] {
+        goals.filter { !$0.isCompleted }
     }
     
     var workoutsThisWeek: Int {
@@ -42,19 +45,16 @@ class WorkoutViewModel: ObservableObject {
     }
     
     func deleteGoals(at offsets: IndexSet) {
-        offsets.forEach { index in
-            completedGoals.remove(goals[index].id)
-        }
         goals.remove(atOffsets: offsets)
     }
     
     func calculateGoalProgress(_ goal: Goal) -> Double {
-        if let manualProgress = goal.manualProgress {
-            return manualProgress
+        if goal.isCompleted {
+            return 1.0
         }
         
-        if isGoalCompleted(goal) {
-            return 1.0
+        if let manualProgress = goal.manualProgress {
+            return manualProgress
         }
         
         switch goal.type {
@@ -85,16 +85,10 @@ class WorkoutViewModel: ObservableObject {
     }
     
     func isGoalCompleted(_ goal: Goal) -> Bool {
-        completedGoals.contains(goal.id)
+        return goal.isCompleted
     }
     
     func updateGoalProgress(_ goal: Goal, progress: Double) {
-        if progress >= 1.0 {
-            completedGoals.insert(goal.id)
-        } else {
-            completedGoals.remove(goal.id)
-        }
-        
         if let index = goals.firstIndex(where: { $0.id == goal.id }) {
             goals[index] = Goal(
                 id: goal.id,
@@ -102,7 +96,8 @@ class WorkoutViewModel: ObservableObject {
                 type: goal.type,
                 target: goal.target,
                 deadline: goal.deadline,
-                manualProgress: progress
+                manualProgress: progress,
+                isCompleted: progress >= 1.0
             )
         }
         objectWillChange.send()
