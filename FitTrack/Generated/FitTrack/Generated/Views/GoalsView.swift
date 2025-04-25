@@ -7,6 +7,8 @@ struct GoalsView: View {
     @State private var filterOption: GoalFilterOption = .all
     @State private var selectedGoal: Goal?
     @State private var showingProgressSheet = false
+    @State private var showingDeleteAlert = false
+    @State private var goalToDelete: Goal?
     
     var filteredAndSortedGoals: [Goal] {
         let filtered = viewModel.goals.filter { goal in
@@ -39,13 +41,20 @@ struct GoalsView: View {
                         GoalRow(goal: goal,
                                progress: viewModel.calculateGoalProgress(goal),
                                daysRemaining: viewModel.daysRemaining(for: goal))
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                selectedGoal = goal
-                                showingProgressSheet = true
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            selectedGoal = goal
+                            showingProgressSheet = true
+                        }
+                        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                            Button(role: .destructive) {
+                                goalToDelete = goal
+                                showingDeleteAlert = true
+                            } label: {
+                                Label("Delete", systemImage: "trash")
                             }
+                        }
                     }
-                    .onDelete(perform: deleteGoal)
                 }
             }
             .navigationTitle("Goals")
@@ -63,6 +72,16 @@ struct GoalsView: View {
                 UpdateProgressView(viewModel: viewModel, goal: goal) {
                     selectedGoal = nil
                 }
+            }
+            .alert("Delete Goal", isPresented: $showingDeleteAlert, presenting: goalToDelete) { goal in
+                Button("Delete", role: .destructive) {
+                    withAnimation {
+                        viewModel.deleteGoal(goal)
+                    }
+                }
+                Button("Cancel", role: .cancel) {}
+            } message: { goal in
+                Text("Are you sure you want to delete '\(goal.title)'?")
             }
         }
     }
@@ -86,118 +105,5 @@ struct GoalsView: View {
         }
         .padding(.vertical, 8)
         .background(Color(.systemBackground))
-    }
-    
-    private func deleteGoal(at offsets: IndexSet) {
-        viewModel.deleteGoals(at: offsets)
-    }
-}
-
-struct GoalRow: View {
-    let goal: Goal
-    let progress: Double
-    let daysRemaining: Int
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack {
-                Text(goal.title)
-                    .font(.headline)
-                Spacer()
-                Text("\(Int(progress * 100))%")
-                    .foregroundColor(.purple)
-                    .bold()
-            }
-            
-            ProgressBar(progress: progress)
-            
-            HStack {
-                Text(goal.type.rawValue)
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                
-                Spacer()
-                
-                HStack(spacing: 4) {
-                    Image(systemName: "calendar")
-                        .foregroundColor(.secondary)
-                    Text(daysRemaining == 0 ? "Due today" :
-                            daysRemaining < 0 ? "Overdue" :
-                            "\(daysRemaining) days left")
-                        .font(.subheadline)
-                        .foregroundColor(daysRemaining <= 0 ? .red : .secondary)
-                }
-                
-                Text("Target: \(goal.target)")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-            }
-        }
-        .padding(.vertical, 8)
-    }
-}
-
-struct UpdateProgressView: View {
-    @ObservedObject var viewModel: WorkoutViewModel
-    let goal: Goal
-    let dismissAction: () -> Void
-    @State private var progress: Double
-    @Environment(\.dismiss) private var dismiss
-    
-    init(viewModel: WorkoutViewModel, goal: Goal, dismissAction: @escaping () -> Void) {
-        self.viewModel = viewModel
-        self.goal = goal
-        self.dismissAction = dismissAction
-        _progress = State(initialValue: (goal.manualProgress ?? viewModel.calculateGoalProgress(goal)) * 100)
-    }
-    
-    var body: some View {
-        NavigationView {
-            Form {
-                Section(header: Text("Update Progress")) {
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text("Goal: \(goal.title)")
-                            .font(.headline)
-                        
-                        Text("Target: \(goal.target) \(goal.type.rawValue)")
-                            .foregroundColor(.secondary)
-                        
-                        Slider(value: $progress, in: 0...100, step: 1) {
-                            Text("Progress")
-                        }
-                        
-                        Text("Progress: \(Int(progress))%")
-                            .foregroundColor(.purple)
-                            .bold()
-                    }
-                    .padding(.vertical, 8)
-                }
-                
-                Section {
-                    Button("Mark as Complete") {
-                        viewModel.updateGoalProgress(goal, progress: 1.0)
-                        dismiss()
-                    }
-                    .foregroundColor(.green)
-                    
-                    if progress < 100 {
-                        Button("Update Progress") {
-                            viewModel.updateGoalProgress(goal, progress: progress / 100)
-                            dismiss()
-                        }
-                        .foregroundColor(.purple)
-                    }
-                }
-            }
-            .navigationTitle("Update Progress")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
-                        dismiss()
-                    }
-                }
-            }
-        }
     }
 }

@@ -40,12 +40,24 @@ class WorkoutViewModel: ObservableObject {
         workouts.remove(atOffsets: offsets)
     }
     
+    func deleteWorkout(_ workout: Workout) {
+        if let index = workouts.firstIndex(where: { $0.id == workout.id }) {
+            workouts.remove(at: index)
+        }
+    }
+    
     func addGoal(_ goal: Goal) {
         goals.append(goal)
     }
     
     func deleteGoals(at offsets: IndexSet) {
         goals.remove(atOffsets: offsets)
+    }
+    
+    func deleteGoal(_ goal: Goal) {
+        if let index = goals.firstIndex(where: { $0.id == goal.id }) {
+            goals.remove(at: index)
+        }
     }
     
     func calculateGoalProgress(_ goal: Goal) -> Double {

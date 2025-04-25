@@ -4,6 +4,8 @@ struct WorkoutListView: View {
     @ObservedObject var viewModel: WorkoutViewModel
     @State private var showingAddWorkout = false
     @State private var searchText = ""
+    @State private var showingDeleteAlert = false
+    @State private var workoutToDelete: Workout?
     
     var filteredWorkouts: [Workout] {
         if searchText.isEmpty {
@@ -20,8 +22,15 @@ struct WorkoutListView: View {
                     NavigationLink(destination: WorkoutDetailView(workout: workout)) {
                         WorkoutRow(workout: workout)
                     }
+                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                        Button(role: .destructive) {
+                            workoutToDelete = workout
+                            showingDeleteAlert = true
+                        } label: {
+                            Label("Delete", systemImage: "trash")
+                        }
+                    }
                 }
-                .onDelete(perform: deleteWorkout)
             }
             .navigationTitle("Workouts")
             .searchable(text: $searchText)
@@ -35,41 +44,16 @@ struct WorkoutListView: View {
             .sheet(isPresented: $showingAddWorkout) {
                 AddWorkoutView(viewModel: viewModel)
             }
-        }
-    }
-    
-    private func deleteWorkout(at offsets: IndexSet) {
-        viewModel.deleteWorkouts(at: offsets)
-    }
-}
-
-struct WorkoutRow: View {
-    let workout: Workout
-    
-    var body: some View {
-        HStack {
-            Image(systemName: workout.type.icon)
-                .font(.title2)
-                .foregroundColor(.purple)
-                .frame(width: 40, height: 40)
-                .background(Color.purple.opacity(0.2))
-                .clipShape(Circle())
-            
-            VStack(alignment: .leading, spacing: 4) {
-                Text(workout.name)
-                    .font(.headline)
-                
-                Text("\(workout.duration) min • \(workout.type.rawValue)")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
+            .alert("Delete Workout", isPresented: $showingDeleteAlert, presenting: workoutToDelete) { workout in
+                Button("Delete", role: .destructive) {
+                    withAnimation {
+                        viewModel.deleteWorkout(workout)
+                    }
+                }
+                Button("Cancel", role: .cancel) {}
+            } message: { workout in
+                Text("Are you sure you want to delete '\(workout.name)'?")
             }
-            
-            Spacer()
-            
-            Text(workout.date.formatted(date: .abbreviated, time: .omitted))
-                .font(.caption)
-                .foregroundColor(.secondary)
         }
-        .padding(.vertical, 8)
     }
 }
