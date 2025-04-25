@@ -1,28 +1,9 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @AppStorage("isDarkMode") private var isDarkMode = false
-    @Environment(\.colorScheme) var colorScheme
-    
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text("Appearance").foregroundColor(.primary)) {
-                    Toggle(isOn: $isDarkMode) {
-                        Label {
-                            Text("Dark Mode")
-                                .foregroundColor(.primary)
-                        } icon: {
-                            Image(systemName: "moon.fill")
-                                .foregroundColor(.purple)
-                        }
-                    }
-                    .tint(.purple)
-                    .onChange(of: isDarkMode) { _ in
-                        updateAppearance()
-                    }
-                }
-                
                 Section(header: Text("About").foregroundColor(.primary)) {
                     Button(action: rateApp) {
                         Label {
@@ -81,12 +62,6 @@ struct SettingsView: View {
             }
             .navigationTitle("Settings")
             .background(Color(UIColor.systemBackground))
-        }
-    }
-    
-    private func updateAppearance() {
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-            windowScene.windows.first?.overrideUserInterfaceStyle = isDarkMode ? .dark : .light
         }
     }
     

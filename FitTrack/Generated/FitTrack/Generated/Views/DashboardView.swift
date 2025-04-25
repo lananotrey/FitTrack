@@ -4,7 +4,6 @@ import Charts
 struct DashboardView: View {
     @ObservedObject var viewModel: WorkoutViewModel
     @State private var selectedTimeFrame: TimeFrame = .week
-    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         NavigationView {
@@ -23,7 +22,7 @@ struct DashboardView: View {
                 .padding()
             }
             .navigationTitle("Dashboard")
-            .background(colorScheme == .dark ? Color(UIColor.systemBackground) : Color(.systemGroupedBackground))
+            .background(Color(.systemGroupedBackground))
         }
     }
 }
@@ -52,7 +51,6 @@ struct HeaderCard: View {
 
 struct StatisticsSection: View {
     @ObservedObject var viewModel: WorkoutViewModel
-    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 15), count: 2), spacing: 15) {
@@ -66,7 +64,6 @@ struct StatisticsSection: View {
 
 struct ActiveGoalsSection: View {
     let goals: [Goal]
-    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         if !goals.isEmpty {
@@ -81,7 +78,7 @@ struct ActiveGoalsSection: View {
                 }
             }
             .padding()
-            .background(colorScheme == .dark ? Color(UIColor.secondarySystemBackground) : Color(.secondarySystemGroupedBackground))
+            .background(Color(.secondarySystemGroupedBackground))
             .cornerRadius(15)
         }
     }
@@ -109,7 +106,6 @@ struct StatCard: View {
     let title: String
     let value: String
     let icon: String
-    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -128,14 +124,13 @@ struct StatCard: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
-        .background(colorScheme == .dark ? Color(UIColor.secondarySystemBackground) : Color(.secondarySystemGroupedBackground))
+        .background(Color(.secondarySystemGroupedBackground))
         .cornerRadius(15)
     }
 }
 
 struct RecentWorkoutsSection: View {
     @ObservedObject var viewModel: WorkoutViewModel
-    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -150,7 +145,7 @@ struct RecentWorkoutsSection: View {
             }
         }
         .padding()
-        .background(colorScheme == .dark ? Color(UIColor.secondarySystemBackground) : Color(.secondarySystemGroupedBackground))
+        .background(Color(.secondarySystemGroupedBackground))
         .cornerRadius(15)
     }
 }
