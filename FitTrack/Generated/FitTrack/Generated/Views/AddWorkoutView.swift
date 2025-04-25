@@ -6,9 +6,17 @@ struct AddWorkoutView: View {
     
     @State private var workoutName = ""
     @State private var workoutType: WorkoutType = .cardio
-    @State private var duration = 30
+    @State private var durationString = ""
     @State private var date = Date()
     @State private var notes = ""
+    
+    var duration: Int {
+        return Int(durationString) ?? 0
+    }
+    
+    var isValidInput: Bool {
+        !workoutName.isEmpty && duration > 0 && duration <= 180
+    }
     
     var body: some View {
         NavigationView {
@@ -22,8 +30,13 @@ struct AddWorkoutView: View {
                         }
                     }
                     
-                    Stepper(value: $duration, in: 1...180) {
-                        Text("Duration: \(duration) minutes")
+                    TextField("Duration (minutes)", text: $durationString)
+                        .keyboardType(.numberPad)
+                    
+                    if !durationString.isEmpty && (duration <= 0 || duration > 180) {
+                        Text("Duration must be between 1 and 180 minutes")
+                            .font(.caption)
+                            .foregroundColor(.red)
                     }
                     
                     DatePicker("Date", selection: $date, displayedComponents: [.date, .hourAndMinute])
@@ -47,7 +60,7 @@ struct AddWorkoutView: View {
                     Button("Save") {
                         saveWorkout()
                     }
-                    .disabled(workoutName.isEmpty)
+                    .disabled(!isValidInput)
                 }
             }
         }

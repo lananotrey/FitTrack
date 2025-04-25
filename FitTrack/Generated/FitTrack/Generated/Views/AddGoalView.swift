@@ -6,8 +6,16 @@ struct AddGoalView: View {
     
     @State private var goalTitle = ""
     @State private var goalType: GoalType = .workouts
-    @State private var target = 10
+    @State private var targetString = ""
     @State private var deadline = Date().addingTimeInterval(7 * 24 * 3600)
+    
+    var target: Int {
+        return Int(targetString) ?? 0
+    }
+    
+    var isValidInput: Bool {
+        !goalTitle.isEmpty && target > 0
+    }
     
     var body: some View {
         NavigationView {
@@ -21,11 +29,31 @@ struct AddGoalView: View {
                         }
                     }
                     
-                    Stepper(value: $target, in: 1...1000) {
-                        Text("Target: \(target)")
+                    TextField("Target Value", text: $targetString)
+                        .keyboardType(.numberPad)
+                    
+                    if !targetString.isEmpty && target <= 0 {
+                        Text("Target value must be greater than 0")
+                            .font(.caption)
+                            .foregroundColor(.red)
                     }
                     
                     DatePicker("Deadline", selection: $deadline, displayedComponents: .date)
+                }
+                
+                Section {
+                    Text("Set a realistic target based on your goal type:")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    
+                    switch goalType {
+                    case .workouts:
+                        Text("Suggested: 3-5 workouts per week")
+                    case .minutes:
+                        Text("Suggested: 150 minutes per week")
+                    case .calories:
+                        Text("Suggested: 2000-3000 calories per week")
+                    }
                 }
             }
             .navigationTitle("Add Goal")
@@ -41,7 +69,7 @@ struct AddGoalView: View {
                     Button("Save") {
                         saveGoal()
                     }
-                    .disabled(goalTitle.isEmpty)
+                    .disabled(!isValidInput)
                 }
             }
         }
