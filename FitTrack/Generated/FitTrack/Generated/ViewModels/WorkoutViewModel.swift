@@ -1,8 +1,43 @@
 import Foundation
 
 class WorkoutViewModel: ObservableObject {
-    @Published var workouts: [Workout] = []
-    @Published var goals: [Goal] = []
+    @Published var workouts: [Workout] = [] {
+        didSet {
+            saveData()
+        }
+    }
+    
+    @Published var goals: [Goal] = [] {
+        didSet {
+            saveData()
+        }
+    }
+    
+    init() {
+        loadData()
+    }
+    
+    private func saveData() {
+        if let encodedWorkouts = try? JSONEncoder().encode(workouts) {
+            UserDefaults.standard.set(encodedWorkouts, forKey: "workouts")
+        }
+        
+        if let encodedGoals = try? JSONEncoder().encode(goals) {
+            UserDefaults.standard.set(encodedGoals, forKey: "goals")
+        }
+    }
+    
+    private func loadData() {
+        if let savedWorkouts = UserDefaults.standard.data(forKey: "workouts"),
+           let decodedWorkouts = try? JSONDecoder().decode([Workout].self, from: savedWorkouts) {
+            workouts = decodedWorkouts
+        }
+        
+        if let savedGoals = UserDefaults.standard.data(forKey: "goals"),
+           let decodedGoals = try? JSONDecoder().decode([Goal].self, from: savedGoals) {
+            goals = decodedGoals
+        }
+    }
     
     var recentWorkouts: [Workout] {
         Array(workouts.prefix(5))
