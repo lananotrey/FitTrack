@@ -4,8 +4,6 @@ struct WorkoutListView: View {
     @ObservedObject var viewModel: WorkoutViewModel
     @Binding var selectedTab: Int
     @State private var showingAddWorkout = false
-    @State private var showingEditWorkout = false
-    @State private var selectedWorkout: Workout?
     @State private var searchText = ""
     @State private var showingDeleteAlert = false
     @State private var workoutToDelete: Workout?
@@ -23,26 +21,13 @@ struct WorkoutListView: View {
             List {
                 ForEach(filteredWorkouts) { workout in
                     WorkoutRow(workout: workout)
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            selectedWorkout = workout
-                            showingEditWorkout = true
-                        }
-                        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                             Button(role: .destructive) {
                                 workoutToDelete = workout
                                 showingDeleteAlert = true
                             } label: {
                                 Label("Delete", systemImage: "trash")
                             }
-                            
-                            Button {
-                                selectedWorkout = workout
-                                showingEditWorkout = true
-                            } label: {
-                                Label("Edit", systemImage: "pencil")
-                            }
-                            .tint(.blue)
                         }
                 }
             }
@@ -57,11 +42,6 @@ struct WorkoutListView: View {
             }
             .sheet(isPresented: $showingAddWorkout) {
                 AddWorkoutView(viewModel: viewModel, selectedTab: $selectedTab)
-            }
-            .sheet(isPresented: $showingEditWorkout) {
-                if let workout = selectedWorkout {
-                    EditWorkoutView(viewModel: viewModel, workout: workout)
-                }
             }
             .alert("Delete Workout", isPresented: $showingDeleteAlert, presenting: workoutToDelete) { workout in
                 Button("Delete", role: .destructive) {
