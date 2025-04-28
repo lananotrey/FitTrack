@@ -23,6 +23,11 @@ struct WorkoutListView: View {
             List {
                 ForEach(filteredWorkouts) { workout in
                     WorkoutRow(workout: workout)
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            selectedWorkout = workout
+                            showingEditWorkout = true
+                        }
                         .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                             Button(role: .destructive) {
                                 workoutToDelete = workout
@@ -30,6 +35,14 @@ struct WorkoutListView: View {
                             } label: {
                                 Label("Delete", systemImage: "trash")
                             }
+                            
+                            Button {
+                                selectedWorkout = workout
+                                showingEditWorkout = true
+                            } label: {
+                                Label("Edit", systemImage: "pencil")
+                            }
+                            .tint(.blue)
                         }
                 }
             }
@@ -44,6 +57,11 @@ struct WorkoutListView: View {
             }
             .sheet(isPresented: $showingAddWorkout) {
                 AddWorkoutView(viewModel: viewModel, selectedTab: $selectedTab)
+            }
+            .sheet(isPresented: $showingEditWorkout) {
+                if let workout = selectedWorkout {
+                    EditWorkoutView(viewModel: viewModel, workout: workout)
+                }
             }
             .alert("Delete Workout", isPresented: $showingDeleteAlert, presenting: workoutToDelete) { workout in
                 Button("Delete", role: .destructive) {
