@@ -58,10 +58,8 @@ struct WorkoutListView: View {
             .sheet(isPresented: $showingAddWorkout) {
                 AddWorkoutView(viewModel: viewModel, selectedTab: $selectedTab)
             }
-            .sheet(isPresented: $showingEditWorkout) {
-                if let workout = selectedWorkout {
-                    EditWorkoutView(viewModel: viewModel, workout: workout)
-                }
+            .sheet(item: $selectedWorkout) { workout in
+                EditWorkoutView(viewModel: viewModel, workout: workout)
             }
             .alert("Delete Workout", isPresented: $showingDeleteAlert, presenting: workoutToDelete) { workout in
                 Button("Delete", role: .destructive) {

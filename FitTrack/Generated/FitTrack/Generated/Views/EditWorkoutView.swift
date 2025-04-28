@@ -33,13 +33,18 @@ struct EditWorkoutView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Workout Details")) {
+                Section(header: Text("Workout Details").foregroundColor(.primary)) {
                     TextField("Workout Name", text: $workoutName)
                     
-                    Picker("Type", selection: $workoutType) {
-                        ForEach(WorkoutType.allCases, id: \.self) { type in
-                            Text(type.rawValue).tag(type)
+                    HStack {
+                        Text("Type")
+                        Spacer()
+                        Picker("Type", selection: $workoutType) {
+                            ForEach(WorkoutType.allCases, id: \.self) { type in
+                                Text(type.rawValue).tag(type)
+                            }
                         }
+                        .pickerStyle(.menu)
                     }
                     
                     TextField("Duration (minutes)", text: $durationString)
@@ -54,7 +59,7 @@ struct EditWorkoutView: View {
                     DatePicker("Date", selection: $date, displayedComponents: [.date, .hourAndMinute])
                 }
                 
-                Section(header: Text("Notes")) {
+                Section(header: Text("Notes").foregroundColor(.primary)) {
                     TextEditor(text: $notes)
                         .frame(height: 100)
                 }
