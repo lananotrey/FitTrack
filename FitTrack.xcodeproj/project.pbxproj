@@ -18,7 +18,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8E0CC5CF2B619F6500EC52E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E4A75F32CC1937D00F4F7FC /* FitTrackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitTrackApp.swift; sourceTree = "<group>"; };
 		8E4A75F72CC1937D00F4F7FC /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		8E4A76312CC19D2C00F4F7FC /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -60,7 +59,6 @@
 				8E538E922D177FBC00CF8EE0 /* FitTrack.entitlements */,
 				8E4A76312CC19D2C00F4F7FC /* GoogleService-Info.plist */,
 				8EAB576F2C40226900A542D5 /* PrivacyInfo.xcprivacy */,
-				8E0CC5CF2B619F6500EC52E0 /* Info.plist */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
