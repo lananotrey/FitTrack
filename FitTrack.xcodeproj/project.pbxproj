@@ -30,6 +30,7 @@
 		F29F45292DC041E90016AF6E /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				FitTrack/Info.plist,
 				FitTrack/Project.xcconfig,
 			);
 			target = 8EFC1E462B554FD5005637B3 /* FitTrack */;
