@@ -4,6 +4,8 @@ struct WorkoutListView: View {
     @ObservedObject var viewModel: WorkoutViewModel
     @Binding var selectedTab: Int
     @State private var showingAddWorkout = false
+    @State private var showingEditWorkout = false
+    @State private var selectedWorkout: Workout?
     @State private var searchText = ""
     @State private var showingDeleteAlert = false
     @State private var workoutToDelete: Workout?
@@ -20,17 +22,28 @@ struct WorkoutListView: View {
         NavigationView {
             List {
                 ForEach(filteredWorkouts) { workout in
-                    NavigationLink(destination: WorkoutDetailView(workout: workout)) {
-                        WorkoutRow(workout: workout)
-                    }
-                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                        Button(role: .destructive) {
-                            workoutToDelete = workout
-                            showingDeleteAlert = true
-                        } label: {
-                            Label("Delete", systemImage: "trash")
+                    WorkoutRow(workout: workout)
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            selectedWorkout = workout
+                            showingEditWorkout = true
                         }
-                    }
+                        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                            Button(role: .destructive) {
+                                workoutToDelete = workout
+                                showingDeleteAlert = true
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }
+                            
+                            Button {
+                                selectedWorkout = workout
+                                showingEditWorkout = true
+                            } label: {
+                                Label("Edit", systemImage: "pencil")
+                            }
+                            .tint(.blue)
+                        }
                 }
             }
             .navigationTitle("Workouts")
@@ -44,6 +57,9 @@ struct WorkoutListView: View {
             }
             .sheet(isPresented: $showingAddWorkout) {
                 AddWorkoutView(viewModel: viewModel, selectedTab: $selectedTab)
+            }
+            .sheet(item: $selectedWorkout, onDismiss: { selectedWorkout = nil }) { workout in
+                EditWorkoutView(viewModel: viewModel, workout: workout)
             }
             .alert("Delete Workout", isPresented: $showingDeleteAlert, presenting: workoutToDelete) { workout in
                 Button("Delete", role: .destructive) {

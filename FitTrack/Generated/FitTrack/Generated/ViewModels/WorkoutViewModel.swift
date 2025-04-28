@@ -72,6 +72,14 @@ class WorkoutViewModel: ObservableObject {
         updateGoalsProgress()
     }
     
+    func updateWorkout(_ workout: Workout) {
+        if let index = workouts.firstIndex(where: { $0.id == workout.id }) {
+            workouts[index] = workout
+            workouts.sort { $0.date > $1.date }
+            updateGoalsProgress()
+        }
+    }
+    
     func deleteWorkouts(at offsets: IndexSet) {
         workouts.remove(atOffsets: offsets)
         updateGoalsProgress()
