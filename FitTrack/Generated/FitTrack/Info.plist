@@ -15,9 +15,9 @@
     <key>CFBundlePackageType</key>
     <string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
     <key>CFBundleShortVersionString</key>
-    <string>1.0</string>
+    <string>$(MARKETING_VERSION)</string>
     <key>CFBundleVersion</key>
-    <string>1</string>
+    <string>$(CURRENT_PROJECT_VERSION)</string>
     <key>LSRequiresIPhoneOS</key>
     <true/>
     <key>UIApplicationSceneManifest</key>
@@ -39,15 +39,15 @@
         <string>UIInterfaceOrientationLandscapeLeft</string>
         <string>UIInterfaceOrientationLandscapeRight</string>
     </array>
-    <key>NSCameraUsageDescription</key>
-    <string>We need access to your camera to take profile photos</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>We need access to your photo library to select profile photos</string>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string>We need your location to track outdoor workouts</string>
     <key>NSHealthShareUsageDescription</key>
     <string>We need access to your health data to sync workouts</string>
     <key>NSHealthUpdateUsageDescription</key>
     <string>We need permission to save workout data to Health</string>
+    <key>NSCameraUsageDescription</key>
+    <string>We need access to your camera to take profile photos</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>We need access to your photo library to select profile photos</string>
 </dict>
 </plist>
