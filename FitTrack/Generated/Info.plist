@@ -42,7 +42,5 @@
         <key>NSAllowsArbitraryLoads</key>
         <true/>
     </dict>
-    <key>CODE_SIGN_ALLOW_ENTITLEMENTS_MODIFICATION</key>
-    <true/>
 </dict>
 </plist>
