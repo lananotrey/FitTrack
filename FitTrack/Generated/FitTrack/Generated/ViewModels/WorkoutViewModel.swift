@@ -3,13 +3,13 @@ import Foundation
 class WorkoutViewModel: ObservableObject {
     @Published var workouts: [Workout] = [] {
         didSet {
-            saveData()
+            saveWorkouts()
         }
     }
     
     @Published var goals: [Goal] = [] {
         didSet {
-            saveData()
+            saveGoals()
         }
     }
     
@@ -17,27 +17,27 @@ class WorkoutViewModel: ObservableObject {
         loadData()
     }
     
-    private func saveData() {
-        do {
-            let workoutsData = try JSONEncoder().encode(workouts)
-            let goalsData = try JSONEncoder().encode(goals)
-            
-            UserDefaults.standard.set(workoutsData, forKey: "workouts")
-            UserDefaults.standard.set(goalsData, forKey: "goals")
-        } catch {
-            print("Error saving data: \(error)")
+    private func saveWorkouts() {
+        if let encodedData = try? JSONEncoder().encode(workouts) {
+            UserDefaults.standard.set(encodedData, forKey: "savedWorkouts")
+        }
+    }
+    
+    private func saveGoals() {
+        if let encodedData = try? JSONEncoder().encode(goals) {
+            UserDefaults.standard.set(encodedData, forKey: "savedGoals")
         }
     }
     
     private func loadData() {
-        if let workoutsData = UserDefaults.standard.data(forKey: "workouts"),
-           let goalsData = UserDefaults.standard.data(forKey: "goals") {
-            do {
-                workouts = try JSONDecoder().decode([Workout].self, from: workoutsData)
-                goals = try JSONDecoder().decode([Goal].self, from: goalsData)
-            } catch {
-                print("Error loading data: \(error)")
-            }
+        if let savedWorkouts = UserDefaults.standard.data(forKey: "savedWorkouts"),
+           let decodedWorkouts = try? JSONDecoder().decode([Workout].self, from: savedWorkouts) {
+            self.workouts = decodedWorkouts
+        }
+        
+        if let savedGoals = UserDefaults.standard.data(forKey: "savedGoals"),
+           let decodedGoals = try? JSONDecoder().decode([Goal].self, from: savedGoals) {
+            self.goals = decodedGoals
         }
     }
     
@@ -72,7 +72,7 @@ class WorkoutViewModel: ObservableObject {
         workouts.append(workout)
         workouts.sort { $0.date > $1.date }
         updateGoalsProgress()
-        saveData()
+        saveWorkouts()
     }
     
     func updateWorkout(_ workout: Workout) {
@@ -80,21 +80,21 @@ class WorkoutViewModel: ObservableObject {
             workouts[index] = workout
             workouts.sort { $0.date > $1.date }
             updateGoalsProgress()
-            saveData()
+            saveWorkouts()
         }
     }
     
     func deleteWorkouts(at offsets: IndexSet) {
         workouts.remove(atOffsets: offsets)
         updateGoalsProgress()
-        saveData()
+        saveWorkouts()
     }
     
     func deleteWorkout(_ workout: Workout) {
         if let index = workouts.firstIndex(where: { $0.id == workout.id }) {
             workouts.remove(at: index)
             updateGoalsProgress()
-            saveData()
+            saveWorkouts()
         }
     }
     
@@ -102,18 +102,18 @@ class WorkoutViewModel: ObservableObject {
         var newGoal = goal
         newGoal.manualProgress = 0.0
         goals.append(newGoal)
-        saveData()
+        saveGoals()
     }
     
     func deleteGoals(at offsets: IndexSet) {
         goals.remove(atOffsets: offsets)
-        saveData()
+        saveGoals()
     }
     
     func deleteGoal(_ goal: Goal) {
         if let index = goals.firstIndex(where: { $0.id == goal.id }) {
             goals.remove(at: index)
-            saveData()
+            saveGoals()
         }
     }
     
@@ -124,7 +124,7 @@ class WorkoutViewModel: ObservableObject {
             goals[index].isCompleted = progress >= 1.0
         }
         objectWillChange.send()
-        saveData()
+        saveGoals()
     }
     
     func calculateGoalProgress(_ goal: Goal) -> Double {
@@ -178,6 +178,6 @@ class WorkoutViewModel: ObservableObject {
             )
         }
         objectWillChange.send()
-        saveData()
+        saveGoals()
     }
 }
