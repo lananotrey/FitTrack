@@ -19,21 +19,23 @@ class WorkoutViewModel: ObservableObject {
     
     private func saveData() {
         if let encodedWorkouts = try? JSONEncoder().encode(workouts) {
-            UserDefaults.standard.set(encodedWorkouts, forKey: "workouts")
+            UserDefaults.standard.set(encodedWorkouts, forKey: "savedWorkouts")
+            UserDefaults.standard.synchronize()
         }
         
         if let encodedGoals = try? JSONEncoder().encode(goals) {
-            UserDefaults.standard.set(encodedGoals, forKey: "goals")
+            UserDefaults.standard.set(encodedGoals, forKey: "savedGoals")
+            UserDefaults.standard.synchronize()
         }
     }
     
     private func loadData() {
-        if let savedWorkouts = UserDefaults.standard.data(forKey: "workouts"),
+        if let savedWorkouts = UserDefaults.standard.data(forKey: "savedWorkouts"),
            let decodedWorkouts = try? JSONDecoder().decode([Workout].self, from: savedWorkouts) {
             workouts = decodedWorkouts
         }
         
-        if let savedGoals = UserDefaults.standard.data(forKey: "goals"),
+        if let savedGoals = UserDefaults.standard.data(forKey: "savedGoals"),
            let decodedGoals = try? JSONDecoder().decode([Goal].self, from: savedGoals) {
             goals = decodedGoals
         }
