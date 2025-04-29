@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct GoalsView: View {
-    @StateObject private var goalViewModel = GoalViewModel()
+    @StateObject private var workoutViewModel = WorkoutViewModel()
     @State private var showingAddGoal = false
     @State private var sortOption: GoalSortOption = .deadline
     @State private var filterOption: GoalFilterOption = .all
@@ -11,7 +11,7 @@ struct GoalsView: View {
     @State private var goalToDelete: Goal?
     
     private var filteredGoals: [Goal] {
-        goalViewModel.goals.filter { goal in
+        workoutViewModel.goals.filter { goal in
             switch filterOption {
             case .all: return true
             case .active: return !goal.isCompleted
@@ -72,17 +72,17 @@ struct GoalsView: View {
                 }
             }
             .sheet(isPresented: $showingAddGoal) {
-                AddGoalView(goalViewModel: goalViewModel)
+                AddGoalView(viewModel: workoutViewModel)
             }
             .sheet(item: $selectedGoal) { goal in
-                UpdateProgressView(goalViewModel: goalViewModel, goal: goal) {
+                UpdateProgressView(viewModel: workoutViewModel, goal: goal) {
                     selectedGoal = nil
                 }
             }
             .alert("Delete Goal", isPresented: $showingDeleteAlert, presenting: goalToDelete) { goal in
                 Button("Delete", role: .destructive) {
                     withAnimation {
-                        goalViewModel.deleteGoal(goal)
+                        workoutViewModel.deleteGoal(goal)
                     }
                 }
                 Button("Cancel", role: .cancel) {}
