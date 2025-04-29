@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct GoalsView: View {
-    @StateObject private var workoutViewModel = WorkoutViewModel()
+    @ObservedObject var workoutViewModel: WorkoutViewModel
     @State private var showingAddGoal = false
     @State private var sortOption: GoalSortOption = .deadline
     @State private var filterOption: GoalFilterOption = .all

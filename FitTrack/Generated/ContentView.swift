@@ -25,7 +25,7 @@ struct ContentView: View {
                         }
                         .tag(1)
                     
-                    GoalsView()
+                    GoalsView(workoutViewModel: workoutViewModel)
                         .tabItem {
                             Image(systemName: "flag.fill")
                             Text("Goals")
