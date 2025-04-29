@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct GoalsView: View {
-    @ObservedObject var viewModel: WorkoutViewModel
+    @StateObject private var goalViewModel = GoalViewModel()
     @State private var showingAddGoal = false
     @State private var sortOption: GoalSortOption = .deadline
     @State private var filterOption: GoalFilterOption = .all
@@ -11,11 +11,11 @@ struct GoalsView: View {
     @State private var goalToDelete: Goal?
     
     private var filteredGoals: [Goal] {
-        viewModel.goals.filter { goal in
+        goalViewModel.goals.filter { goal in
             switch filterOption {
             case .all: return true
-            case .active: return !viewModel.isGoalCompleted(goal)
-            case .completed: return viewModel.isGoalCompleted(goal)
+            case .active: return !goal.isCompleted
+            case .completed: return goal.isCompleted
             }
         }
     }
@@ -26,7 +26,9 @@ struct GoalsView: View {
             case .deadline:
                 return goal1.deadline < goal2.deadline
             case .progress:
-                return viewModel.calculateGoalProgress(goal1) > viewModel.calculateGoalProgress(goal2)
+                let progress1 = goal1.manualProgress ?? 0
+                let progress2 = goal2.manualProgress ?? 0
+                return progress1 > progress2
             case .name:
                 return goal1.title < goal2.title
             }
@@ -42,8 +44,8 @@ struct GoalsView: View {
                     ForEach(sortedGoals) { goal in
                         GoalRow(
                             goal: goal,
-                            progress: viewModel.calculateGoalProgress(goal),
-                            daysRemaining: viewModel.daysRemaining(for: goal)
+                            progress: goal.manualProgress ?? 0,
+                            daysRemaining: Calendar.current.dateComponents([.day], from: Date(), to: goal.deadline).day ?? 0
                         )
                         .contentShape(Rectangle())
                         .onTapGesture {
@@ -70,17 +72,17 @@ struct GoalsView: View {
                 }
             }
             .sheet(isPresented: $showingAddGoal) {
-                AddGoalView(viewModel: viewModel)
+                AddGoalView(goalViewModel: goalViewModel)
             }
             .sheet(item: $selectedGoal) { goal in
-                UpdateProgressView(viewModel: viewModel, goal: goal) {
+                UpdateProgressView(goalViewModel: goalViewModel, goal: goal) {
                     selectedGoal = nil
                 }
             }
             .alert("Delete Goal", isPresented: $showingDeleteAlert, presenting: goalToDelete) { goal in
                 Button("Delete", role: .destructive) {
                     withAnimation {
-                        viewModel.deleteGoal(goal)
+                        goalViewModel.deleteGoal(goal)
                     }
                 }
                 Button("Cancel", role: .cancel) {}
