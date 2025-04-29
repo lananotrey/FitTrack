@@ -25,17 +25,17 @@ struct ContentView: View {
                         }
                         .tag(1)
                     
-                    GoalsView(viewModel: workoutViewModel)
+                    GoalsView()
                         .tabItem {
                             Image(systemName: "flag.fill")
                             Text("Goals")
                         }
                         .tag(2)
                     
-                    SettingsView()
+                    ProfileView()
                         .tabItem {
-                            Image(systemName: "gearshape.fill")
-                            Text("Settings")
+                            Image(systemName: "person.fill")
+                            Text("Profile")
                         }
                         .tag(3)
                 }
