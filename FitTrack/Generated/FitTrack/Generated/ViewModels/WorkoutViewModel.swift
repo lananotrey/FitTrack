@@ -18,26 +18,38 @@ class WorkoutViewModel: ObservableObject {
     }
     
     private func saveData() {
-        if let encodedWorkouts = try? JSONEncoder().encode(workouts) {
-            UserDefaults.standard.set(encodedWorkouts, forKey: "savedWorkouts")
-            UserDefaults.standard.synchronize()
-        }
-        
-        if let encodedGoals = try? JSONEncoder().encode(goals) {
-            UserDefaults.standard.set(encodedGoals, forKey: "savedGoals")
-            UserDefaults.standard.synchronize()
+        do {
+            let workoutsData = try JSONEncoder().encode(workouts)
+            let goalsData = try JSONEncoder().encode(goals)
+            
+            if let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+                let workoutsURL = documentsDirectory.appendingPathComponent("workouts.json")
+                let goalsURL = documentsDirectory.appendingPathComponent("goals.json")
+                
+                try workoutsData.write(to: workoutsURL)
+                try goalsData.write(to: goalsURL)
+            }
+        } catch {
+            print("Error saving data: \(error)")
         }
     }
     
     private func loadData() {
-        if let savedWorkouts = UserDefaults.standard.data(forKey: "savedWorkouts"),
-           let decodedWorkouts = try? JSONDecoder().decode([Workout].self, from: savedWorkouts) {
-            workouts = decodedWorkouts
-        }
-        
-        if let savedGoals = UserDefaults.standard.data(forKey: "savedGoals"),
-           let decodedGoals = try? JSONDecoder().decode([Goal].self, from: savedGoals) {
-            goals = decodedGoals
+        do {
+            if let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+                let workoutsURL = documentsDirectory.appendingPathComponent("workouts.json")
+                let goalsURL = documentsDirectory.appendingPathComponent("goals.json")
+                
+                if let workoutsData = try? Data(contentsOf: workoutsURL) {
+                    workouts = try JSONDecoder().decode([Workout].self, from: workoutsData)
+                }
+                
+                if let goalsData = try? Data(contentsOf: goalsURL) {
+                    goals = try JSONDecoder().decode([Goal].self, from: goalsData)
+                }
+            }
+        } catch {
+            print("Error loading data: \(error)")
         }
     }
     
@@ -72,6 +84,7 @@ class WorkoutViewModel: ObservableObject {
         workouts.append(workout)
         workouts.sort { $0.date > $1.date }
         updateGoalsProgress()
+        saveData()
     }
     
     func updateWorkout(_ workout: Workout) {
@@ -79,18 +92,21 @@ class WorkoutViewModel: ObservableObject {
             workouts[index] = workout
             workouts.sort { $0.date > $1.date }
             updateGoalsProgress()
+            saveData()
         }
     }
     
     func deleteWorkouts(at offsets: IndexSet) {
         workouts.remove(atOffsets: offsets)
         updateGoalsProgress()
+        saveData()
     }
     
     func deleteWorkout(_ workout: Workout) {
         if let index = workouts.firstIndex(where: { $0.id == workout.id }) {
             workouts.remove(at: index)
             updateGoalsProgress()
+            saveData()
         }
     }
     
@@ -98,15 +114,18 @@ class WorkoutViewModel: ObservableObject {
         var newGoal = goal
         newGoal.manualProgress = 0.0
         goals.append(newGoal)
+        saveData()
     }
     
     func deleteGoals(at offsets: IndexSet) {
         goals.remove(atOffsets: offsets)
+        saveData()
     }
     
     func deleteGoal(_ goal: Goal) {
         if let index = goals.firstIndex(where: { $0.id == goal.id }) {
             goals.remove(at: index)
+            saveData()
         }
     }
     
@@ -117,6 +136,7 @@ class WorkoutViewModel: ObservableObject {
             goals[index].isCompleted = progress >= 1.0
         }
         objectWillChange.send()
+        saveData()
     }
     
     func calculateGoalProgress(_ goal: Goal) -> Double {
@@ -170,5 +190,6 @@ class WorkoutViewModel: ObservableObject {
             )
         }
         objectWillChange.send()
+        saveData()
     }
 }
