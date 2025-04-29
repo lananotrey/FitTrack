@@ -22,34 +22,22 @@ class WorkoutViewModel: ObservableObject {
             let workoutsData = try JSONEncoder().encode(workouts)
             let goalsData = try JSONEncoder().encode(goals)
             
-            if let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-                let workoutsURL = documentsDirectory.appendingPathComponent("workouts.json")
-                let goalsURL = documentsDirectory.appendingPathComponent("goals.json")
-                
-                try workoutsData.write(to: workoutsURL)
-                try goalsData.write(to: goalsURL)
-            }
+            UserDefaults.standard.set(workoutsData, forKey: "workouts")
+            UserDefaults.standard.set(goalsData, forKey: "goals")
         } catch {
             print("Error saving data: \(error)")
         }
     }
     
     private func loadData() {
-        do {
-            if let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-                let workoutsURL = documentsDirectory.appendingPathComponent("workouts.json")
-                let goalsURL = documentsDirectory.appendingPathComponent("goals.json")
-                
-                if let workoutsData = try? Data(contentsOf: workoutsURL) {
-                    workouts = try JSONDecoder().decode([Workout].self, from: workoutsData)
-                }
-                
-                if let goalsData = try? Data(contentsOf: goalsURL) {
-                    goals = try JSONDecoder().decode([Goal].self, from: goalsData)
-                }
+        if let workoutsData = UserDefaults.standard.data(forKey: "workouts"),
+           let goalsData = UserDefaults.standard.data(forKey: "goals") {
+            do {
+                workouts = try JSONDecoder().decode([Workout].self, from: workoutsData)
+                goals = try JSONDecoder().decode([Goal].self, from: goalsData)
+            } catch {
+                print("Error loading data: \(error)")
             }
-        } catch {
-            print("Error loading data: \(error)")
         }
     }
     
